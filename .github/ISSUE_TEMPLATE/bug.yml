@@ -1,0 +1,129 @@
+name: Bug report
+description: Something in Kescher itself is broken — the popup, a download, the options, the build.
+title: "[bug] "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For "a particular website does not work", please use the
+        **A site does not work** template instead — it asks for the things that
+        report needs.
+
+        **Never paste cookies, `Authorization` headers or URL tokens.** Strip query
+        strings from URLs before pasting them.
+
+        Found a security problem? Do not file it here — see
+        [`SECURITY.md`](https://github.com/STACK25/kescher.app/blob/main/SECURITY.md).
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you saw, including the exact error message if there was one.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Please use the test fixtures or a public page if you can — a reproduction we can run is worth ten descriptions.
+      placeholder: |
+        1. …
+        2. …
+        3. …
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where
+      options:
+        - Popup
+        - Download page or a running job
+        - Options page
+        - Detection (badge, candidate list)
+        - Produced file is broken
+        - Installing or updating the extension
+        - Somewhere else
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Firefox
+        - Firefox ESR
+        - Chrome
+        - Chromium
+        - Vivaldi
+        - Edge
+        - Brave
+        - Opera
+        - Not browser-specific
+    validations:
+      required: true
+
+  - type: input
+    id: browser-version
+    attributes:
+      label: Browser version
+      placeholder: "132.0"
+    validations:
+      required: false
+
+  - type: input
+    id: kescher-version
+    attributes:
+      label: Kescher version
+      description: "`about:addons` / `chrome://extensions`."
+      placeholder: "0.3.0"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: macOS 15.2 / Windows 11 / Ubuntu 24.04
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Errors and logs
+      description: |
+        Console output from the extension pages (right-click the popup → *Inspect*,
+        or open the Downloads page and its DevTools), the background worker's console
+        (`chrome://extensions` → *Service worker*, `about:debugging` → *Inspect*), or
+        the debug bundle from the Downloads page. Remove anything secret first.
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: regression
+    attributes:
+      label: Regression
+      options:
+        - label: This used to work in an earlier version of Kescher.
+          required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+    validations:
+      required: false

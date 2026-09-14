@@ -1,0 +1,174 @@
+name: A site does not work
+description: Kescher finds nothing, finds the wrong thing, or the download fails on a particular website.
+title: "[site] "
+labels: ["site", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time. This is the most useful kind of report we get.
+
+        **Kescher never gets site-specific code.** What we are looking for in
+        your report is the *generic* cause — a header, a MIME
+        type, a manifest shape, a redirect — so the fix works on every site with
+        the same behaviour.
+
+        **Please remove secrets.** Strip query strings, tokens, signatures and
+        session ids from every URL you paste, and never paste a `Cookie` or
+        `Authorization` header. The debug bundle below already does this for you.
+
+        Two things we cannot fix, so please check first:
+
+        - **DRM.** Netflix, Disney+, Prime Video and similar services are
+          encrypted end to end. If the popup shows the video as *protected*,
+          that is correct and final.
+        - **Live streams.** They are detected and labelled LIVE; recording them
+          is planned, not shipped.
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Before you file
+      options:
+        - label: The popup does not show the item as *protected* (DRM is out of scope).
+          required: true
+        - label: I started playing the video first, then opened the popup (Kescher only sees what the player requests while it is watching).
+          required: true
+        - label: I tried the *Reload page and watch* button in the popup's empty state.
+          required: true
+        - label: Every URL and log I paste has its query string, tokens and cookies removed.
+          required: true
+
+  - type: input
+    id: page-url
+    attributes:
+      label: Page URL (tokens removed)
+      description: The page you were on. If it is behind a login or a paywall, give the public landing page and say so below.
+      placeholder: https://example.com/media/some-programme
+    validations:
+      required: true
+
+  - type: dropdown
+    id: access
+    attributes:
+      label: Is the page publicly reachable?
+      options:
+        - Yes, anyone can open it
+        - It needs a free account
+        - It needs a paid account or is geo-restricted
+    validations:
+      required: true
+
+  - type: dropdown
+    id: what-happens
+    attributes:
+      label: What happens
+      options:
+        - Kescher finds nothing at all
+        - Kescher finds something, but not the video (ads, thumbnails, fragments)
+        - The qualities or the sizes listed are wrong
+        - The download starts and then fails
+        - The file is produced but is broken (no audio, wrong length, will not play)
+        - Something else
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+      placeholder: One 1080p HLS stream of the main programme, ~45 minutes.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the page
+        2. Press play and let it run for ~5 seconds
+        3. Open the Kescher popup
+        4. …
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      options:
+        - Firefox
+        - Firefox ESR
+        - Chrome
+        - Chromium
+        - Vivaldi
+        - Edge
+        - Brave
+        - Opera
+        - Other (say which below)
+    validations:
+      required: true
+
+  - type: input
+    id: browser-version
+    attributes:
+      label: Browser version
+      description: "`about:support` in Firefox, `chrome://version` in Chromium browsers."
+      placeholder: "132.0"
+    validations:
+      required: true
+
+  - type: input
+    id: kescher-version
+    attributes:
+      label: Kescher version
+      description: "`about:addons` in Firefox, `chrome://extensions` in Chromium browsers."
+      placeholder: "0.3.0"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      placeholder: macOS 15.2 / Windows 11 / Ubuntu 24.04
+    validations:
+      required: true
+
+  - type: textarea
+    id: debug-bundle
+    attributes:
+      label: Debug bundle
+      description: |
+        Kescher's *Downloads* page has a **Download debug bundle** button. The bundle
+        contains the extension log, the candidates and the job state with query strings
+        stripped, no cookies and no request headers beyond an allowlist. Drag the file
+        into this field. Open it in a text editor first if you want to check it.
+
+        If the download page has no such button yet (it arrives in a later release),
+        say so and paste what the popup showed instead.
+      placeholder: Drag kescher-debug-*.json here, or explain why you cannot attach one.
+    validations:
+      required: false
+
+  - type: textarea
+    id: media-request
+    attributes:
+      label: The request that carries the video (optional but very helpful)
+      description: |
+        DevTools → Network → play the video → find the `.m3u8`, `.mpd` or `.mp4`
+        request → right-click → *Copy as cURL*. **Delete the `Cookie`,
+        `Authorization` and any token query parameters before pasting.** If the
+        stream is a manifest, the first ~40 lines of its body are gold.
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: extra
+    attributes:
+      label: Anything else
+      description: Console errors from the extension pages, whether it used to work, whether another browser behaves differently.
+    validations:
+      required: false

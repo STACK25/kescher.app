@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security problem
+    url: https://github.com/STACK25/kescher.app/blob/main/SECURITY.md
+    about: Please do not file security problems as issues — see the policy.
+  - name: kescher.app
+    url: https://kescher.app/
+    about: Downloads, install steps, privacy statement and imprint.

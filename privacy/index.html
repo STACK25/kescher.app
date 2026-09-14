@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Kescher</title>
+<meta name="description" content="What Kescher observes, where it is kept, how long, and how to delete all of it. Nothing leaves your browser.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kescher.app/privacy/">
+<link rel="alternate" hreflang="en" href="https://kescher.app/privacy/">
+<link rel="alternate" hreflang="x-default" href="https://kescher.app/privacy/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://a.kescher.app; connect-src 'self' https://a.kescher.app; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="stylesheet" href="/assets/site.css">
+<script src="/assets/site.js"></script>
+<!-- Self-hosted, cookieless Umami — this website only. The extension itself
+     sends nothing anywhere; see /privacy/. The tracker origin is the one
+     constant at the top of /assets/a.js. -->
+<script defer src="/assets/a.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" focusable="false"><clipPath id="kj1"><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5"/></clipPath><g clip-path="url(#kj1)" fill="none" stroke="currentColor" stroke-width="1.9" opacity=".45"><path d="M16.64 0v64M26.88 0v64M37.12 0v64M47.36 0v64M0 16.64h64M0 26.88h64M0 37.12h64M0 47.36h64"/></g><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="none" stroke="currentColor" stroke-width="6.4"/><polygon points="23.3,16 23.3,48 50.9,32" fill="#ff5a36"/></svg>
+      <span>Kescher</span>
+    </a>
+    <span class="sp"></span>
+    <div class="tog" role="group" aria-label="Appearance">
+      <button type="button" data-t="auto" aria-pressed="true">Auto</button>
+      <button type="button" data-t="light" aria-pressed="false">Light</button>
+      <button type="button" data-t="dark" aria-pressed="false">Dark</button>
+    </div>
+    <a class="go" href="/#install">Install</a>
+  </div>
+</header>
+
+<main id="main" class="doc">
+  <div class="wrap">
+    <div class="prose">
+      <h1>Privacy</h1>
+
+      <p>Kescher is a browser extension that finds the videos a page plays and saves
+      them to disk. It needs broad access to the browser to do that, and it uses
+      none of it to learn anything about you.</p>
+
+      <p><strong>Nothing leaves your browser.</strong> Kescher has no server, no account, no
+      analytics, no crash reporting, no update ping beyond the store's own
+      mechanism, and no uninstall survey. The only network requests it ever makes
+      are to the media you asked it to download, to the manifests and decryption
+      keys that media references, and — while that download runs — to the one cover
+      image the page itself declared for it.</p>
+
+      <p>This document is the canonical privacy statement, and its public address —
+      the one both store listings give — is
+      <a href="https://kescher.app/privacy/">https://kescher.app/privacy/</a>.</p>
+
+      <p>It is linked from <em>Privacy</em> in the options page's About section and from
+      both store listings. A verbatim copy ships <strong>inside</strong> the extension as
+      <code>PRIVACY.txt</code>, and that is the copy the options page links to — reading
+      Kescher's privacy statement must not itself be a request to somebody's
+      server.</p>
+
+      <p class="meta">Last reviewed 2026-09-13, against the extension's manifest and the behaviour
+      described below. Anything that changes what Kescher observes or stores changes
+      this statement with it.</p>
+
+      <h2 id="observes">What Kescher observes</h2>
+
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th>Data</th><th>Why</th><th>Where it lives</th><th>How long</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>Response headers of requests your tabs make (<code>content-type</code>, <code>content-length</code>, <code>content-range</code>, <code>content-disposition</code>), the request URL, tab and frame id</td>
+            <td>This <em>is</em> the detection: a video is recognised by what the player loads</td>
+            <td><code>storage.session</code> (browser memory)</td>
+            <td>Until the tab navigates, the tab is closed, or the browser restarts</td>
+          </tr>
+          <tr>
+            <td>Page URL and page title, <code>&lt;video&gt;</code>/<code>&lt;audio&gt;</code> source URLs, poster URL, duration</td>
+            <td>Naming the file and replaying the request with the right <code>Referer</code></td>
+            <td><code>storage.session</code></td>
+            <td>As above</td>
+          </tr>
+          <tr>
+            <td>What the page says the media is: title, author, series, date, description and a cover image URL, as the page declares them in its own schema.org, Open Graph and <code>&lt;meta&gt;</code> tags</td>
+            <td>Writing them into the file you save, so a media player, Plex or your phone shows it properly</td>
+            <td><code>storage.session</code>, and on the download's own record in <code>storage.local</code> while it exists</td>
+            <td>As above; the copy on a download record goes with the history entry</td>
+          </tr>
+          <tr>
+            <td>Manifest bodies (<code>.m3u8</code>, <code>.mpd</code>)</td>
+            <td>Listing the qualities and planning the segments</td>
+            <td>Memory only, never written to disk</td>
+            <td>Until the background worker sleeps</td>
+          </tr>
+          <tr>
+            <td>Your settings</td>
+            <td>Your settings</td>
+            <td><code>storage.sync</code> (or <code>storage.local</code> when sync is off)</td>
+            <td>Until you change or reset them</td>
+          </tr>
+          <tr>
+            <td>Download jobs and history: file name, size, source URL, time, state</td>
+            <td>The download page and the history list</td>
+            <td><code>storage.local</code>, metadata only — never the video bytes</td>
+            <td>30 days / 200 entries by default; configurable, clearable, opt-out</td>
+          </tr>
+          <tr>
+            <td>The file being downloaded, while it is being downloaded</td>
+            <td>Some downloads have to be assembled by Kescher rather than by the browser's download manager — a stream made of hundreds of segments, or a file whose server insists on a <code>Referer</code>. The bytes are streamed into the browser's own private storage (OPFS) as they arrive, never held in memory, and handed to the download manager when the file is complete</td>
+            <td>The origin private file system, which only this extension can read and which is not the page's storage</td>
+            <td>Deleted as soon as the file has been handed over, and on cancel or failure. A leftover is swept on the next start of the download page unless a job record still claims it, in which case cancelling that row deletes it. Nothing is kept after the download</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p><code>Cookie</code>, <code>Set-Cookie</code>, <code>Authorization</code> and <code>Proxy-Authorization</code> headers are
+      dropped the moment a response is seen, before anything is stored or logged.
+      Downloads started in a private window are marked as such and are never written
+      to the history or to a debug bundle. While such a download is running, its row
+      exists in the browser's session storage so that the download page of that
+      private window can show it and finish it; that record is gone when you close the
+      browser, and a window that is not private never shows it.</p>
+
+      <h2 id="metadata">What is written into the file you save</h2>
+
+      <p>A downloaded file carries the description <strong>the page itself published</strong> about
+      that media, so that your media player, Plex, Jellyfin or your phone shows a
+      title and a cover instead of a file name: the title, the author or artist, the
+      series or site, the date, the description, the address of the page it came
+      from, and the page's own cover image. Nothing else. No header, no cookie, no
+      segment or manifest URL, nothing Kescher observed on the network, and nothing
+      the page did not declare. Every value is stripped of the characters that
+      misrepresent text and clamped to a sane length first, exactly as a title in
+      the popup is. You can switch the whole thing off in the settings (<em>Embed the
+      page's title, author, date and cover in the file</em>).</p>
+
+      <p><strong>The cover is one request, and the only one Kescher makes that is not the
+      media itself.</strong> While your download is running, Kescher fetches the single
+      image URL the page declared for that media — its <code>thumbnailUrl</code>, its
+      <code>og:image</code> or the player's poster — and writes it into the file as cover art.
+      It is one <code>GET</code>, to a URL the page gave, under the same rules as every other
+      request of that download; it is capped at 2 MB; only JPEG, PNG and WebP are
+      accepted; and if it fails for any reason the download simply carries on
+      without artwork. The image is not stored anywhere else, and nothing is fetched
+      when you merely open the popup: a page you never download from is never
+      requested.</p>
+
+      <h2 id="debug-bundle">The debug bundle</h2>
+
+      <p>A bug report about a site that does not work is worth what its evidence is
+      worth, so the download page can write a <strong>debug bundle</strong>: a JSON file holding
+      what Kescher saw on that page and what it tried. It is written only when you
+      press <em>Download debug bundle</em>, it goes into your download folder like any
+      other file, and it is never sent anywhere — attaching it to a bug report is
+      your decision, after you have read it.</p>
+
+      <p>What it cannot contain, by construction rather than by care:</p>
+      <ul>
+        <li><strong>No query strings.</strong> Every URL in it is cut at the <code>?</code>, in fields, in log
+        messages and in header values alike, because a signed media URL carries its
+        token there.</li>
+        <li><strong>No headers except an allowlist</strong> of headers that describe the shape of a
+        response (<code>content-type</code>, <code>content-length</code>, <code>content-range</code>, …). A header
+        nobody thought about is dropped rather than carried.</li>
+        <li><strong>Nothing from a private window</strong> — not a candidate, not a job, not a log
+        line.</li>
+      </ul>
+
+      <p>Exactly one place in Kescher builds a bundle, and an automated test checks
+      those three rules against a thousand random header maps. <em>Report this site</em>
+      opens a prefilled issue in a new tab; it makes no request of its own and
+      carries no token.</p>
+
+      <h2 id="never">What Kescher never does</h2>
+      <ul>
+        <li><strong>It never reads your cookies.</strong> Kescher does not use the <code>cookies</code>
+        permission and never touches <code>browser.cookies</code>. When it downloads from a
+        site you are logged into, the browser attaches the cookies itself, exactly as
+        it does for the page — Kescher never sees their value.</li>
+        <li><strong>It never sends your data anywhere.</strong> No telemetry, no analytics, no error
+        reporting, no remote configuration, no remote code.</li>
+        <li><strong>It never circumvents DRM.</strong> Protected streams are labelled <em>protected</em> and
+        cannot be downloaded.</li>
+        <li><strong>It never loads anything from a third party.</strong> Every byte of the extension
+        ships in the package, and every build is checked for remote references
+        before it is packaged.</li>
+      </ul>
+
+      <h2 id="permissions">Permissions</h2>
+
+      <p>Every permission Kescher requests, and the single reason it is requested. An
+      automated test fails if the manifest ever asks for something that is not
+      listed here.</p>
+
+      <div class="table-scroll">
+      <table>
+        <thead><tr><th>Permission</th><th>Why Kescher needs it</th></tr></thead>
+        <tbody>
+          <tr><td><code>webRequest</code></td><td>Watch the response headers of media requests your tabs make. This is how videos are detected; without it Kescher would have to guess. Response bodies are not read.</td></tr>
+          <tr><td><code>webNavigation</code></td><td>Notice when a tab navigates so the list of found videos is cleared for that page. Back/forward and cached navigations are invisible to <code>webRequest</code> alone.</td></tr>
+          <tr><td><code>downloads</code></td><td>Save the finished file with the browser's download manager and offer <em>Show in folder</em>.</td></tr>
+          <tr><td><code>storage</code></td><td>Keep your settings, the download history and the per-tab list of found videos. All of it stays in the browser.</td></tr>
+          <tr><td><code>notifications</code></td><td>Tell you when a download has finished or failed, so you do not have to watch the page. The notification names the file and nothing else, it is shown by your operating system, and you can switch it off in the settings.</td></tr>
+          <tr><td><code>contextMenus</code></td><td>Add the single <em>Kescher: download this video</em> entry to the right-click menu on a video, an audio element or a link. Kescher reads the address you clicked on and nothing else about the page.</td></tr>
+          <tr><td><code>declarativeNetRequestWithHostAccess</code></td><td>Chromium only. Set <code>Referer</code>/<code>Origin</code> on the extension's own download requests, because a CDN often rejects a request without them. The rules are scoped to Kescher's own download tab and removed when the job ends.</td></tr>
+          <tr><td><code>webRequestBlocking</code></td><td>Firefox only. The same thing: rewrite <code>Referer</code>/<code>Origin</code> on Kescher's own download requests. Firefox has no <code>declarativeNetRequest</code> equivalent for this.</td></tr>
+          <tr><td><code>&lt;all_urls&gt;</code> (host permission)</td><td>Videos live on any domain, and a video's segments usually live on a different domain than the page. Kescher cannot know in advance which sites you will use it on. It reads nothing from a page beyond the media URLs and the page title, and it acts only when you press <em>Download</em>.</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p>Deliberately <strong>not</strong> requested: <code>tabs</code>, <code>cookies</code>, <code>unlimitedStorage</code>,
+      <code>scripting</code>, <code>activeTab</code> and <code>downloads.open</code>.</p>
+
+      <h2 id="delete">How to delete everything</h2>
+      <ul>
+        <li><strong>The list of found videos</strong> disappears on its own when you navigate or
+        close the tab; <em>Clear list</em> in the popup removes it immediately.</li>
+        <li><strong>History</strong> — <em>Clear history</em> on the download page, or set the retention to
+        zero days in the settings.</li>
+        <li><strong>Settings</strong> — <em>Reset settings</em> on the options page.</li>
+        <li><strong>A half-finished download</strong> is deleted at once when you cancel it or when it
+        fails. One left behind by a crash or a browser restart is swept from the
+        private file system the next time the download page starts — with one
+        exception, so that opening a second download page cannot delete the file the
+        first one is still writing: a partial file whose job record still says the
+        job is running is kept until that row is cancelled. Nothing has to be cleaned
+        up by hand, and an uninstall takes it too.</li>
+        <li><strong>Everything at once</strong> — uninstall the extension. Chrome and Firefox delete
+        all extension storage with it. Files you already downloaded stay where you
+        saved them; they are yours.</li>
+      </ul>
+
+      <h2 id="website">This website</h2>
+
+      <p>Everything above is about the extension. This website — <code>kescher.app</code> — is a
+      separate thing, and it does count visits.</p>
+
+      <p>Visits are measured with <strong>Umami</strong>, an open analytics tool running on an
+      instance the maintainer operates himself. No analytics company, no advertising
+      network and no other third party is involved at any point, and the data never
+      leaves that instance: it is not passed on, not sold and not combined with anything
+      else. Umami records, per visit: the page that was opened, the referrer that led to
+      it, the browser, the operating system, the device type, and the country derived
+      from your IP address — <strong>the IP address itself is not stored</strong>. Clicks on
+      the download buttons are counted together with the browser you chose, so that it
+      is possible to see which install route people actually use.</p>
+
+      <p>There are <strong>no cookies</strong>, no cross-site tracking, no fingerprinting, no
+      advertising network, no profile and no personal data. Nothing collected here can be
+      traced back to a person — not by the maintainer, and not by anyone else.</p>
+
+      <p>If you would rather not be counted at all, Umami's own opt-out works here:
+      set <code>umami.disabled</code> to <code>1</code> in this site's local storage (developer
+      tools → Application → Local Storage) and the measurement script is not even
+      fetched on your next visit. A content blocker has the same effect, and nothing on
+      the site depends on it.</p>
+
+      <p><strong>The extension itself sends nothing anywhere</strong>, and there is no connection
+      between the two: installing Kescher does not start any measurement, and
+      nothing you do with the extension reaches this website.
+      <a href="#never">What Kescher never does</a> stays true word for word.</p>
+
+      <h2 id="contact">Contact</h2>
+
+      <p>Privacy questions and reports: open an issue in the
+      <a href="https://github.com/STACK25/kescher.app/issues">issue tracker</a>, or write to
+      the address in the <a href="/imprint/">imprint</a>.</p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap inner">
+    <a class="brand" href="/">
+      <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" focusable="false"><clipPath id="kj3"><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5"/></clipPath><g clip-path="url(#kj3)" fill="none" stroke="currentColor" stroke-width="1.9" opacity=".45"><path d="M16.64 0v64M26.88 0v64M37.12 0v64M47.36 0v64M0 16.64h64M0 26.88h64M0 37.12h64M0 47.36h64"/></g><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="none" stroke="currentColor" stroke-width="6.4"/><polygon points="23.3,16 23.3,48 50.9,32" fill="#ff5a36"/></svg>
+      <span>Kescher</span>
+    </a>
+    <nav aria-label="Legal">
+      <a href="/privacy/">Privacy</a>
+      <a href="/license/">License</a>
+      <a href="/imprint/">Imprint</a>
+    </nav>
+    <p class="fine">kescher.app &mdash; a browser extension for Chrome, Vivaldi, Edge, Brave, Opera and Firefox.</p>
+    <p class="fine">Kescher is a tool. Only download content you have the right to download, respect the terms of service of the sites you use and the copyright of the people who made the videos.</p>
+  </div>
+</footer>
+</body>
+</html>
