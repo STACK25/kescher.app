@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kescher — the video a page plays, saved to your disk</title>
-<meta name="description" content="Kescher finds the videos a page plays and writes them to disk — HLS and DASH reassembled into one finished file inside the browser. Free of charge, no quota, no account, no companion app. For Chrome, Vivaldi, Edge, Brave, Opera and Firefox.">
+<title>Kescher — Free Video Downloader for Chrome &amp; Firefox</title>
+<meta name="description" content="Free video downloader for Chrome and Firefox: save videos from any website in one click. HLS and DASH streams become one MP4, audio only as MP3. No account.">
 <meta name="color-scheme" content="light dark">
 <link rel="canonical" href="https://kescher.app/">
 <link rel="alternate" hreflang="en" href="https://kescher.app/">
@@ -14,8 +14,8 @@
 <meta property="og:url" content="https://kescher.app/">
 <meta property="og:site_name" content="Kescher">
 <meta property="og:locale" content="en">
-<meta property="og:title" content="Kescher — the video a page plays, saved to your disk">
-<meta property="og:description" content="Finds the videos a page plays and writes them to disk — HLS and DASH reassembled into one finished file. No quota, no account, no companion app.">
+<meta property="og:title" content="Kescher — Free Video Downloader for Chrome &amp; Firefox">
+<meta property="og:description" content="Free video downloader for Chrome and Firefox: save videos from any website in one click. HLS and DASH streams become one MP4, audio only as MP3. No account.">
 <meta property="og:image" content="https://kescher.app/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -28,6 +28,88 @@
      sends nothing anywhere; see /privacy/. The tracker origin is the one
      constant at the top of /assets/a.js. -->
 <script defer src="/assets/a.js"></script>
+<!-- Structured data. Both blocks are data, not code: browsers never execute an
+     application/ld+json block, so the strict script-src above is untouched.
+     Everything stated here is stated on the page itself. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Kescher",
+  "applicationCategory": ["BrowserApplication", "MultimediaApplication"],
+  "operatingSystem": "Chrome, Firefox",
+  "browserRequirements": "Chrome, Vivaldi, Edge, Brave, Opera or Firefox",
+  "url": "https://kescher.app/",
+  "downloadUrl": [
+    "https://github.com/STACK25/kescher.app/releases/latest/download/kescher-chrome.zip",
+    "https://github.com/STACK25/kescher.app/releases/latest/download/kescher-firefox.xpi"
+  ],
+  "screenshot": "https://kescher.app/assets/og.png",
+  "inLanguage": "en",
+  "description": "Free video downloader for Chrome and Firefox: save videos from any website in one click. HLS and DASH streams become one MP4, audio only as MP3. No account.",
+  "author": { "@type": "Person", "name": "Lars Keggenhoff" },
+  "license": "https://kescher.app/license/",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "inLanguage": "en",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Does Kescher work on every website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no list of supported sites in Kescher. It watches the requests the page you are on makes, and whatever that page plays — HLS, DASH, MP4 or WebM — turns up in the panel. The exception is DRM: a stream protected by it is listed as protected and left alone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it download from Netflix?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Netflix and services like it protect their video with DRM, and Kescher never circumvents copy protection. A protected stream is reported as protected, and that is where it stops."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Kescher free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, in the plain sense of the word: every download, in every quantity, at no charge. No daily quota, no throttle, no paid tier, no licence key, no account, no e-mail address."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it send my data anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The extension makes no request except to the media URLs, manifests and keys belonging to the download you started. No analytics, no remote code, no server of ours anywhere in the path, and it never reads or copies your cookies. This website counts visits without cookies; the privacy statement sets out both."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which browsers does it work in?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Chrome, Vivaldi, Edge, Brave and Opera from one package, and Firefox on the desktop from the other. Both files come from the same build."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I install it?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Kescher is not in the browser stores yet, so it installs from the file you download. In Chrome, open chrome://extensions, turn on Developer mode and drag the zip onto that page. In Firefox, open about:addons and choose Install Add-on From File. It takes about a minute, once."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -53,8 +135,10 @@
   <!-- ===================== hero ===================== -->
   <section class="hero">
     <div class="wrap">
-      <p class="eyebrow">Browser extension &middot; Chrome and Firefox</p>
-      <h1>Kescher<span class="dot">.</span></h1>
+      <!-- The page's one h1 is this line: it says what Kescher is in the words
+           people search for. The wordmark below it stays the visual headline. -->
+      <h1 class="eyebrow">Free video downloader &middot; Chrome &amp; Firefox</h1>
+      <p class="wordmark">Kescher<span class="dot">.</span></p>
       <p class="claim">The video a page plays, written to your disk as one finished file <em>&mdash; picture, sound, subtitles and all.</em></p>
       <div class="buttons">
         <a class="btn pri" href="https://github.com/STACK25/kescher.app/releases/latest/download/kescher-chrome.zip" data-umami-event="download" data-umami-event-browser="chrome" data-umami-event-channel="zip">Download for Chrome<small>Also Vivaldi, Edge, Brave, Opera &middot; .zip</small></a>
@@ -133,6 +217,7 @@
   <section class="how">
     <div class="wrap">
       <p class="eyebrow">How it works</p>
+      <h2>Download videos from any website.</h2>
       <div class="beats">
         <div>
           <p class="k">Open</p>
@@ -157,7 +242,7 @@
   <section class="stmt">
     <div class="wrap inner">
       <div>
-        <p class="eyebrow">Streams</p>
+        <p class="eyebrow">HLS and DASH streams</p>
         <h2>A few hundred pieces go in. <span class="q">One file comes out.</span></h2>
         <p>HLS and DASH deliver video in segments, and every player throws them away after playing them. Kescher fetches them in order and remuxes them into a single <span class="mono">.mp4</span>: <b>fMP4 and MPEG&#8209;TS</b> segments, byte&#8209;range playlists, <span class="mono">EXT&#8209;X&#8209;MAP</span> initialisation segments, AES&#8209;128 segments unlocked with the key the page&rsquo;s own player already fetched, and multi&#8209;period DASH joined in presentation order.</p>
         <p><b>No frame is re&#8209;encoded.</b> The picture that lands on your disk is the picture the site sent you. A plain MP4 or WebM needs none of this &mdash; it is simply saved as it was delivered.</p>
@@ -214,7 +299,7 @@
   <section class="stmt alt">
     <div class="wrap inner">
       <div>
-        <p class="eyebrow">Audio only</p>
+        <p class="eyebrow">Audio only &middot; M4A and MP3</p>
         <h2>Take the sound. <span class="q">Leave the picture behind.</span></h2>
         <p><span class="mono">.m4a</span> lifts the original audio track out of the stream and puts it in its own container, untouched &mdash; the same bytes the site sent. <span class="mono">.mp3</span> is converted right there in the tab, by the extension, <b>with nothing installed and nothing uploaded to a converter</b>.</p>
         <p>A ninety&#8209;minute lecture becomes eighty megabytes you can put on a phone and forget about.</p>
@@ -368,6 +453,46 @@
         </div>
       </div>
       <p class="notyet">Both files come from the same build. Pin the icon to your toolbar afterwards and Kescher will show you its count on every page that plays something.</p>
+    </div>
+  </section>
+
+  <!-- ===================== questions ===================== -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <p class="eyebrow">FAQ</p>
+      <h2>The questions that come up first.</h2>
+
+      <div class="qs">
+        <details>
+          <summary><h3>Does Kescher work on every website?</h3></summary>
+          <p class="a">There is no list of supported sites in Kescher. It watches the requests the page you are on makes, and whatever that page plays &mdash; HLS, DASH, MP4 or WebM &mdash; turns up in the panel. The exception is DRM: a stream protected by it is listed as protected and left alone.</p>
+        </details>
+
+        <details>
+          <summary><h3>Does it download from Netflix?</h3></summary>
+          <p class="a">No. Netflix and services like it protect their video with DRM, and Kescher never circumvents copy protection. A protected stream is reported as protected, and that is where it stops.</p>
+        </details>
+
+        <details>
+          <summary><h3>Is Kescher free?</h3></summary>
+          <p class="a">Yes, in the plain sense of the word: every download, in every quantity, at no charge. No daily quota, no throttle, no paid tier, no licence key, no account, no e&#8209;mail address.</p>
+        </details>
+
+        <details>
+          <summary><h3>Does it send my data anywhere?</h3></summary>
+          <p class="a">The extension makes no request except to the media URLs, manifests and keys belonging to the download you started. No analytics, no remote code, no server of ours anywhere in the path, and it never reads or copies your cookies. This website counts visits without cookies; the <a href="/privacy/">privacy statement</a> sets out both.</p>
+        </details>
+
+        <details>
+          <summary><h3>Which browsers does it work in?</h3></summary>
+          <p class="a">Chrome, Vivaldi, Edge, Brave and Opera from one package, and Firefox on the desktop from the other. Both files come from the same build.</p>
+        </details>
+
+        <details>
+          <summary><h3>How do I install it?</h3></summary>
+          <p class="a">Kescher is not in the browser stores yet, so it <a href="#install">installs from the file you download</a>. In Chrome, open <code>chrome://extensions</code>, turn on Developer mode and drag the zip onto that page. In Firefox, open <code>about:addons</code> and choose Install Add&#8209;on From File. It takes about a minute, once.</p>
+        </details>
+      </div>
     </div>
   </section>
 

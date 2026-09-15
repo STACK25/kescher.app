@@ -252,14 +252,14 @@ h3 {
   padding: clamp(56px, 9vw, 132px) 0 0;
   position: relative;
 }
-.hero h1 {
+.hero .wordmark {
   font-weight: 800;
   letter-spacing: -0.055em;
   line-height: 0.86;
   font-size: clamp(62px, 13vw, 196px);
   margin: 0 0 clamp(20px, 2.4vw, 34px);
 }
-.hero h1 .dot {
+.hero .wordmark .dot {
   color: var(--coral);
 }
 .hero .claim {
@@ -630,6 +630,17 @@ h3 {
   border-top: 1px solid var(--line);
   padding: clamp(48px, 6.5vw, 96px) 0;
 }
+/* The mid scale, shared by the two bands that carry a plain heading: how it
+   works, and the questions at the end. */
+.how h2,
+.faq h2 {
+  font-size: clamp(26px, 3.1vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+  margin: 0;
+  max-width: 20ch;
+}
 .beats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -960,6 +971,66 @@ code {
   color: var(--grey);
   font-size: 15px;
   max-width: 62ch;
+}
+
+/* ===================== questions ===================== */
+
+.faq {
+  border-top: 1px solid var(--line);
+  padding: clamp(48px, 6.5vw, 96px) 0;
+}
+.qs {
+  margin-top: clamp(28px, 3.5vw, 48px);
+  max-width: 76ch;
+  border-top: 1px solid var(--line);
+}
+.faq details {
+  border-bottom: 1px solid var(--line);
+}
+.faq summary {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  padding: 18px 0;
+  cursor: pointer;
+  list-style: none;
+}
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+.faq summary h3 {
+  flex: 1;
+  margin: 0;
+  font-size: clamp(17px, 1.6vw, 20px);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.35;
+}
+.faq summary::after {
+  content: '+';
+  flex: none;
+  color: var(--coral);
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 1;
+}
+.faq details[open] summary::after {
+  content: '\2013';
+}
+.faq summary:hover h3 {
+  color: var(--coral);
+}
+.faq .a {
+  margin: 0 0 22px;
+  padding-right: 38px;
+  color: var(--grey);
+  font-size: 16.5px;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+.faq .a a {
+  color: var(--ink);
+  text-underline-offset: 3px;
 }
 
 /* ===================== quiet block ===================== */
