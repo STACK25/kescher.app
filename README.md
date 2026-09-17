@@ -33,11 +33,12 @@ they need a server rather than `file://`.
 ## Downloads
 
 Firefox installs Kescher from
-[addons.mozilla.org](https://addons.mozilla.org/firefox/addon/kescher/). The
-Chrome download button points at the latest release of this repository,
-`kescher-chrome.zip`, for Chrome, Vivaldi, Edge, Brave and Opera; the
-Mozilla-signed `kescher-firefox.xpi` beside it is the same build for anyone
-who prefers a file.
+[addons.mozilla.org](https://addons.mozilla.org/firefox/addon/kescher/), which
+holds the Mozilla-signed file. The Chrome download button points at the latest
+release of this repository, `kescher-chrome.zip`, for Chrome, Vivaldi, Edge,
+Brave and Opera. The `kescher-<version>-firefox-unsigned.xpi` beside it is the
+same build before signing; a release Firefox refuses it, Nightly and Developer
+Edition install it.
 
 ## Contact
 
