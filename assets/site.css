@@ -314,6 +314,51 @@ h3 {
 .btn.sec:hover {
   border-color: var(--grey-2);
 }
+/* "Coming soon": the shape of a button, the manner of a note. Quiet by
+   default; solid ink once it is the visitor's own browser (below). */
+.btn.soon {
+  background: transparent;
+  color: var(--grey);
+  border: 1px dashed var(--line-2);
+  cursor: default;
+}
+/* The visitor's browser leads. `data-browser` is stamped on <html> by site.js
+   before first paint — "firefox", "chromium" (Chrome, Vivaldi, Edge, Brave,
+   Opera, which all present as Chrome) or "other". The two hero buttons and the
+   two install cards obey the same three rules: the visitor's own goes first,
+   carries the one solid fill, and wears the tag. Without a stamp Firefox leads,
+   being the one in a store. */
+.btn .yours {
+  display: none;
+  font: 700 10.5px/1 var(--font);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.72;
+  margin-bottom: 2px;
+}
+html[data-browser='firefox'] .for-firefox .btn .yours,
+html[data-browser='firefox'] .btn.for-firefox .yours,
+html[data-browser='chromium'] .for-chrome .btn .yours,
+html[data-browser='chromium'] .btn.for-chrome .yours {
+  display: block;
+}
+html[data-browser='chromium'] .for-chrome {
+  order: -1;
+}
+html[data-browser='chromium'] .btn.soon {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+html[data-browser='chromium'] .btn.pri {
+  background: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line-2);
+}
+html[data-browser='chromium'] .btn.pri:hover {
+  filter: none;
+  border-color: var(--grey-2);
+}
 .underline {
   margin: 22px 0 0;
   font-size: 14.5px;
@@ -924,6 +969,16 @@ h3 {
   width: 100%;
   align-items: center;
   text-align: center;
+}
+.pkg .meanwhile {
+  margin: 14px 0 0;
+  font-size: 14.5px;
+  line-height: 1.5;
+  color: var(--grey);
+}
+.pkg .meanwhile a {
+  color: var(--ink);
+  text-underline-offset: 3px;
 }
 .pkg ol {
   list-style: none;

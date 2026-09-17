@@ -32,9 +32,12 @@ they need a server rather than `file://`.
 
 ## Downloads
 
-The download buttons point at the latest release of this repository:
-`kescher-chrome.zip` for Chrome, Vivaldi, Edge, Brave and Opera, and
-`kescher-firefox.xpi` for Firefox.
+Firefox installs Kescher from
+[addons.mozilla.org](https://addons.mozilla.org/firefox/addon/kescher/). The
+Chrome download button points at the latest release of this repository,
+`kescher-chrome.zip`, for Chrome, Vivaldi, Edge, Brave and Opera; the
+Mozilla-signed `kescher-firefox.xpi` beside it is the same build for anyone
+who prefers a file.
 
 ## Contact
 

@@ -40,9 +40,10 @@
   "operatingSystem": "Chrome, Firefox",
   "browserRequirements": "Chrome, Vivaldi, Edge, Brave, Opera or Firefox",
   "url": "https://kescher.app/",
+  "installUrl": "https://addons.mozilla.org/firefox/addon/kescher/",
   "downloadUrl": [
-    "https://github.com/STACK25/kescher.app/releases/latest/download/kescher-chrome.zip",
-    "https://github.com/STACK25/kescher.app/releases/latest/download/kescher-firefox.xpi"
+    "https://addons.mozilla.org/firefox/addon/kescher/",
+    "https://github.com/STACK25/kescher.app/releases/latest/download/kescher-chrome.zip"
   ],
   "screenshot": "https://kescher.app/assets/og.png",
   "inLanguage": "en",
@@ -96,7 +97,7 @@
       "name": "Which browsers does it work in?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Chrome, Vivaldi, Edge, Brave and Opera from one package, and Firefox on the desktop from the other. Both files come from the same build."
+        "text": "Firefox on the desktop, from addons.mozilla.org. Chrome, Vivaldi, Edge, Brave and Opera from one package, which is on its way to the Chrome Web Store."
       }
     },
     {
@@ -104,7 +105,7 @@
       "name": "How do I install it?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Kescher is not in the browser stores yet, so it installs from the file you download. In Chrome, open chrome://extensions, turn on Developer mode and drag the zip onto that page. In Firefox, open about:addons and choose Install Add-on From File. It takes about a minute, once."
+        "text": "In Firefox, open the listing on addons.mozilla.org and press Add to Firefox; that is all. In Chrome and its relatives the Chrome Web Store listing is under review. Until it is through, the zip installs in developer mode: open chrome://extensions, turn on Developer mode and drag the zip onto that page."
       }
     }
   ]
@@ -140,9 +141,12 @@
       <h1 class="eyebrow">Free video downloader &middot; Chrome &amp; Firefox</h1>
       <p class="wordmark">Kescher<span class="dot">.</span></p>
       <p class="claim">The video a page plays, written to your disk as one finished file <em>&mdash; picture, sound, subtitles and all.</em></p>
+      <!-- The visitor's own browser leads: site.js stamps data-browser on <html>
+           before first paint and the CSS puts that button first with the
+           emphasis. Without a stamp Firefox leads, being the one in a store. -->
       <div class="buttons">
-        <a class="btn pri" href="https://github.com/STACK25/kescher.app/releases/latest/download/kescher-chrome.zip" data-umami-event="download" data-umami-event-browser="chrome" data-umami-event-channel="zip">Download for Chrome<small>Also Vivaldi, Edge, Brave, Opera &middot; .zip</small></a>
-        <a class="btn sec" href="https://github.com/STACK25/kescher.app/releases/latest/download/kescher-firefox.xpi" data-umami-event="download" data-umami-event-browser="firefox" data-umami-event-channel="xpi">Download for Firefox<small>.xpi, installs from the file</small></a>
+        <a class="btn pri for-firefox" href="https://addons.mozilla.org/firefox/addon/kescher/" data-umami-event="install" data-umami-event-browser="firefox" data-umami-event-channel="amo"><span class="yours">Your browser</span>Install for Firefox<small>From addons.mozilla.org &middot; one click</small></a>
+        <span class="btn soon for-chrome" aria-disabled="true"><span class="yours">Your browser</span>Chrome: coming soon<small>Under review at the Chrome Web Store &middot; also Vivaldi, Edge, Brave, Opera</small></span>
       </div>
       <p class="underline">
         <span><b>Free of charge.</b></span>
@@ -424,35 +428,36 @@
   <section class="install" id="install">
     <div class="wrap">
       <p class="eyebrow">Install</p>
-      <h2>Six browsers, two files, three steps.</h2>
-      <p class="sub">Kescher is not in the browser stores yet, so it installs from the file you download. It takes about a minute, once.</p>
+      <h2>One click in Firefox. Chrome is on its way.</h2>
+      <p class="sub">Kescher is on addons.mozilla.org. The Chrome Web Store listing is under review; until it is through, the zip installs in developer mode and takes about a minute, once.</p>
 
       <div class="pkgs">
-        <div class="pkg">
-          <p class="who">Package one</p>
-          <h3>Chrome and its relatives</h3>
-          <p class="browsers">Chrome &middot; Vivaldi &middot; Edge &middot; Brave &middot; Opera</p>
-          <a class="btn pri" href="https://github.com/STACK25/kescher.app/releases/latest/download/kescher-chrome.zip" data-umami-event="download" data-umami-event-browser="chrome" data-umami-event-channel="zip">Download kescher&#8209;chrome.zip</a>
+        <div class="pkg for-firefox">
+          <p class="who">In the store</p>
+          <h3>Firefox</h3>
+          <p class="browsers">Firefox, on desktop</p>
+          <a class="btn pri" href="https://addons.mozilla.org/firefox/addon/kescher/" data-umami-event="install" data-umami-event-browser="firefox" data-umami-event-channel="amo">Install from addons.mozilla.org</a>
           <ol>
-            <li><span>Download the zip above.</span></li>
-            <li><span>Open <code>chrome://extensions</code> and turn on <b>Developer mode</b> in the top right corner.</span></li>
-            <li><span>Drag the zip onto that page &mdash; or unpack it and press <b>Load unpacked</b>.</span></li>
+            <li><span>Open the listing and press <b>Add to Firefox</b>.</span></li>
+            <li><span>Confirm the permissions Firefox shows &mdash; they are explained on the <a href="/privacy/">privacy page</a>.</span></li>
+            <li><span>Tick <b>Run in Private Windows</b> in the dialog that follows if you want Kescher there too.</span></li>
           </ol>
         </div>
 
-        <div class="pkg">
-          <p class="who">Package two</p>
-          <h3>Firefox</h3>
-          <p class="browsers">Firefox, on desktop</p>
-          <a class="btn sec" href="https://github.com/STACK25/kescher.app/releases/latest/download/kescher-firefox.xpi" data-umami-event="download" data-umami-event-browser="firefox" data-umami-event-channel="xpi">Download kescher&#8209;firefox.xpi</a>
+        <div class="pkg for-chrome">
+          <p class="who">Under review</p>
+          <h3>Chrome and its relatives</h3>
+          <p class="browsers">Chrome &middot; Vivaldi &middot; Edge &middot; Brave &middot; Opera</p>
+          <span class="btn soon" aria-disabled="true">Coming soon to the Chrome Web Store</span>
+          <p class="meanwhile">Can&rsquo;t wait? <a href="https://github.com/STACK25/kescher.app/releases/latest/download/kescher-chrome.zip" data-umami-event="download" data-umami-event-browser="chrome" data-umami-event-channel="zip">Download kescher&#8209;chrome.zip</a> and:</p>
           <ol>
-            <li><span>Download the xpi above.</span></li>
-            <li><span>Open <code>about:addons</code>.</span></li>
-            <li><span>Gear menu &rarr; <b>Install Add&#8209;on From File&hellip;</b> &rarr; choose the xpi.</span></li>
+            <li><span>Open <code>chrome://extensions</code> and turn on <b>Developer mode</b> in the top right corner.</span></li>
+            <li><span>Drag the zip onto that page &mdash; or unpack it and press <b>Load unpacked</b>.</span></li>
+            <li><span>Open <b>Details</b> and allow Kescher in incognito if you want it in private windows.</span></li>
           </ol>
         </div>
       </div>
-      <p class="notyet">Both files come from the same build. Pin the icon to your toolbar afterwards and Kescher will show you its count on every page that plays something.</p>
+      <p class="notyet">Pin the icon to your toolbar afterwards and Kescher will show you its count on every page that plays something.</p>
     </div>
   </section>
 
@@ -485,12 +490,12 @@
 
         <details>
           <summary><h3>Which browsers does it work in?</h3></summary>
-          <p class="a">Chrome, Vivaldi, Edge, Brave and Opera from one package, and Firefox on the desktop from the other. Both files come from the same build.</p>
+          <p class="a">Firefox on the desktop, from addons.mozilla.org. Chrome, Vivaldi, Edge, Brave and Opera from one package, which is on its way to the Chrome Web Store.</p>
         </details>
 
         <details>
           <summary><h3>How do I install it?</h3></summary>
-          <p class="a">Kescher is not in the browser stores yet, so it <a href="#install">installs from the file you download</a>. In Chrome, open <code>chrome://extensions</code>, turn on Developer mode and drag the zip onto that page. In Firefox, open <code>about:addons</code> and choose Install Add&#8209;on From File. It takes about a minute, once.</p>
+          <p class="a">In Firefox, open <a href="https://addons.mozilla.org/firefox/addon/kescher/">the listing on addons.mozilla.org</a> and press Add to Firefox; that is all. In Chrome and its relatives the Chrome Web Store listing is under review. Until it is through, <a href="#install">the zip installs in developer mode</a>: open <code>chrome://extensions</code>, turn on Developer mode and drag the zip onto that page.</p>
         </details>
       </div>
     </div>
