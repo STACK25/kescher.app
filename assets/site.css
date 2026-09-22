@@ -832,12 +832,16 @@ main {
 .segs i.g {
   background: #3a3a42;
 }
-/* The pieces still arriving are faint, the ones about to be caught are full. */
-.segs .o1 { opacity: 0.28; }
-.segs .o2 { opacity: 0.45; }
-.segs .o3 { opacity: 0.65; }
-.segs .o4 { opacity: 0.85; }
-.segs .o5 { opacity: 1; }
+/* The pieces still arriving are faint, the ones about to be caught are full.
+   --o carries the level so the animation below can return to it. */
+.segs .o1 { --o: 0.28; }
+.segs .o2 { --o: 0.45; }
+.segs .o3 { --o: 0.65; }
+.segs .o4 { --o: 0.85; }
+.segs .o5 { --o: 1; }
+.segs i {
+  opacity: var(--o);
+}
 .mesh {
   flex: none;
   width: clamp(140px, 15vw, 210px);
@@ -1542,5 +1546,106 @@ footer .fine {
   * {
     transition: none !important;
     animation: none !important;
+  }
+}
+
+/* ===================== motion ===================== */
+
+/* Two movements, both there to explain something, and both only for visitors
+   who have not asked their system for less motion (the reduce block above
+   switches every animation off as well).
+
+   1. The hero: the toolbar icon is "clicked" (its badge pops, a ring goes
+      out) and the panel drops open from it, once, on load.
+   2. The stream band: when the flow scrolls into view the pieces fly into the
+      net, nearest first, the net lights up, and the finished file appears.
+      site.js arms it (.armed) and starts it (.in); it measures each piece's
+      way to the net into --dx/--dy and staggers them with --d. Without the
+      script, or with less motion, the flow is simply drawn as it is. */
+@media (prefers-reduced-motion: no-preference) {
+  .win .ext b {
+    animation: k-pop 0.45s cubic-bezier(0.3, 1.6, 0.5, 1) 0.2s both;
+  }
+  .win .ext {
+    animation: k-ring 0.9s ease-out 0.35s both;
+  }
+  .popshot {
+    transform-origin: 92% 0;
+    animation: k-drop 0.65s cubic-bezier(0.2, 0.8, 0.2, 1) 0.55s both;
+  }
+
+  .flow.armed .file {
+    opacity: 0;
+    transform: translateY(16px) scale(0.97);
+  }
+  .flow.in .file {
+    opacity: 1;
+    transform: none;
+    transition:
+      opacity 0.6s ease 1.25s,
+      transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 1.25s;
+  }
+  .flow.in .segs i {
+    animation: k-fly 1.9s cubic-bezier(0.55, 0, 0.75, 0.45) var(--d, 0s) both;
+  }
+  .flow.in .mesh {
+    animation: k-catch 1.6s ease-out 0.45s both;
+  }
+}
+@keyframes k-pop {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@keyframes k-ring {
+  from {
+    box-shadow: 0 0 0 0 rgba(255, 107, 74, 0.55);
+  }
+  to {
+    box-shadow: 0 0 0 12px rgba(255, 107, 74, 0);
+  }
+}
+@keyframes k-drop {
+  from {
+    opacity: 0;
+    transform: translateY(-18px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* Out to the net and gone, then quietly back in place: after the animation the
+   band looks as it does without one, plus the file it made. */
+@keyframes k-fly {
+  0% {
+    opacity: var(--o);
+    transform: none;
+  }
+  46% {
+    opacity: 0;
+    transform: translate(var(--dx, 0px), var(--dy, 0px)) scale(0.2);
+  }
+  47% {
+    opacity: 0;
+    transform: none;
+  }
+  100% {
+    opacity: var(--o);
+    transform: none;
+  }
+}
+@keyframes k-catch {
+  0% {
+    filter: drop-shadow(0 0 0 rgba(255, 107, 74, 0));
+  }
+  45% {
+    filter: drop-shadow(0 0 26px rgba(255, 107, 74, 0.6));
+  }
+  100% {
+    filter: drop-shadow(0 0 0 rgba(255, 107, 74, 0));
   }
 }
