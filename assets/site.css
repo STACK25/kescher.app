@@ -1049,6 +1049,10 @@ main {
   border-top: 1px solid var(--line);
   padding: clamp(58px, 8vw, 120px) 0;
 }
+/* The chapter fades out into it; a hairline there would cut the fade. */
+.chapter + .compare {
+  border-top: 0;
+}
 .cmp-head {
   text-align: center;
   max-width: 44rem;
@@ -1125,15 +1129,6 @@ main {
 }
 .side.us li {
   border-top-color: rgba(42, 14, 6, 0.18);
-}
-.compare .vs .src {
-  grid-column: 1 / -1;
-  max-width: none;
-  margin: 10px 0 0;
-  text-align: center;
-  color: var(--grey);
-  font-size: 13.5px;
-  line-height: 1.55;
 }
 
 
