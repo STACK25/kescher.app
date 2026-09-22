@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kescher | Free Video Downloader for Chrome &amp; Firefox</title>
-<meta name="description" content="Free video downloader for Chrome and Firefox: save videos from any website in one click. HLS and DASH streams become one MP4, audio only as MP3. No account.">
+<meta name="description" content="Free video downloader for Chrome and Firefox. Save videos from any website in one click: HLS (m3u8) and DASH streams become one MP4, audio an MP3.">
 <meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://kescher.app/">
 <link rel="alternate" hreflang="en" href="https://kescher.app/">
@@ -18,13 +18,14 @@
 <meta property="og:site_name" content="Kescher">
 <meta property="og:locale" content="en">
 <meta property="og:title" content="Kescher | Free Video Downloader for Chrome &amp; Firefox">
-<meta property="og:description" content="Free video downloader for Chrome and Firefox: save videos from any website in one click. HLS and DASH streams become one MP4, audio only as MP3. No account.">
+<meta property="og:description" content="Free video downloader for Chrome and Firefox. Save videos from any website in one click: HLS (m3u8) and DASH streams become one MP4, audio an MP3.">
 <meta property="og:image" content="https://kescher.app/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Kescher: every video a page plays, saved to disk.">
+<meta property="og:image:alt" content="Kescher: save any video you watch, in one click. The Kescher panel open beside the headline.">
 <meta name="twitter:card" content="summary_large_image">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://a.kescher.app; connect-src 'self' https://a.kescher.app; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css">
 <script src="/assets/site.js"></script>
 <!-- Self-hosted, cookieless Umami — this website only. The extension itself
@@ -51,9 +52,24 @@
     "https://chromewebstore.google.com/detail/kescher/kmobponokcnpchggbonahochfohiaoan",
     "https://addons.mozilla.org/firefox/addon/kescher/"
   ],
-  "screenshot": "https://kescher.app/assets/og.png",
+  "screenshot": [
+    "https://kescher.app/assets/shots/popup-now-playing.webp",
+    "https://kescher.app/assets/shots/popup-stream.webp",
+    "https://kescher.app/assets/shots/popup-progress.webp"
+  ],
+  "featureList": [
+    "Detects the videos and audio a page plays",
+    "HLS (m3u8) and DASH streams saved as one MP4, without re-encoding",
+    "Plain MP4 and WebM files",
+    "Audio only as M4A or MP3, converted in the browser",
+    "Every quality the site offers, in the audio language you choose",
+    "Subtitles saved beside the video",
+    "Title, artist, date and cover art written into the file",
+    "Private windows supported",
+    "No account, no quota, no tracking"
+  ],
   "inLanguage": "en",
-  "description": "Free video downloader for Chrome and Firefox: save videos from any website in one click. HLS and DASH streams become one MP4, audio only as MP3. No account.",
+  "description": "Free video downloader for Chrome and Firefox. Save videos from any website in one click: HLS (m3u8) and DASH streams become one MP4, audio an MP3.",
   "author": { "@type": "Person", "name": "Lars Keggenhoff" },
   "license": "https://kescher.app/license/",
   "isAccessibleForFree": true,
@@ -71,7 +87,31 @@
       "name": "Does Kescher work on every website?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "There is no list of supported sites in Kescher. It watches the requests the page you are on makes, and whatever that page plays (HLS, DASH, MP4 or WebM) turns up in the panel. The exception is DRM: copy&#8209;protected video is marked as protected and cannot be downloaded."
+        "text": "There is no list of supported sites in Kescher. It watches the requests the page you are on makes, and whatever that page plays (HLS, DASH, MP4 or WebM) turns up in the panel. The exception is DRM: copy-protected video is marked as protected and cannot be downloaded."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I download an m3u8 or HLS stream?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Open the page and start the video. Kescher sees the m3u8 playlist the player loads, lists the stream in its panel with every quality it offers, and saves it as one MP4 when you press Download. You never have to copy the playlist address yourself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Kescher save a blob: video?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Usually, yes. A blob: address is not the video itself, only the player's buffer. Behind it the page loads an HLS or DASH stream or a plain file, and Kescher saves the stream those requests belong to. Copy-protected video is the exception: it is marked as protected and cannot be downloaded. Live streams cannot be recorded yet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I save just the audio as MP3?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Choose MP3 or M4A as the output instead of video. M4A keeps the original sound track as the site sent it, and MP3 is converted right in your browser, with nothing uploaded anywhere."
       }
     },
     {
@@ -173,7 +213,7 @@
             <p class="vm">Blue Planet Documentaries &middot; 1:31:17</p>
           </div>
         </div>
-        <img class="popshot" src="/assets/shots/popup-now-playing.webp" width="800" height="654" alt="The Kescher panel open over the page: the episode that is playing is listed first, with the output, the quality, the audio language, the file name and a Download button.">
+        <img class="popshot" src="/assets/shots/popup-now-playing.webp" width="800" height="654" fetchpriority="high" alt="The Kescher panel open over the page: the episode that is playing is listed first, with the output, the quality, the audio language, the file name and a Download button.">
       </div>
     </div>
   </section>
@@ -225,7 +265,7 @@
   <div class="chapter">
   <section class="net">
     <div class="wrap">
-      <p class="eyebrow">HLS and DASH streams</p>
+      <p class="eyebrow">HLS (m3u8) and DASH streams</p>
       <h2>Hundreds of pieces in. <span class="c">One file out.</span></h2>
       <p class="lede">A streaming video does not arrive as a file. It arrives in hundreds of small pieces, and the player throws each one away once it has played it. Kescher catches every piece, in order, and hands you <b>a single MP4 that plays anywhere</b>.</p>
       <div class="flow" role="img" aria-label="Stream segments flowing into the Kescher net and coming out as one file, The Hadal Zone.mp4, 1.57 GB, not re-encoded.">
@@ -418,6 +458,21 @@
         <details>
           <summary><h3>Does Kescher work on every website?</h3></summary>
           <p class="a">There is no list of supported sites in Kescher. It watches the requests the page you are on makes, and whatever that page plays (HLS, DASH, MP4 or WebM) turns up in the panel. The exception is DRM: copy&#8209;protected video is marked as protected and cannot be downloaded.</p>
+        </details>
+
+        <details>
+          <summary><h3>How do I download an m3u8 or HLS stream?</h3></summary>
+          <p class="a">Open the page and start the video. Kescher sees the m3u8 playlist the player loads, lists the stream in its panel with every quality it offers, and saves it as one MP4 when you press Download. You never have to copy the playlist address yourself.</p>
+        </details>
+
+        <details>
+          <summary><h3>Can Kescher save a blob: video?</h3></summary>
+          <p class="a">Usually, yes. A blob: address is not the video itself, only the player's buffer. Behind it the page loads an HLS or DASH stream or a plain file, and Kescher saves the stream those requests belong to. Copy&#8209;protected video is the exception: it is marked as protected and cannot be downloaded. Live streams cannot be recorded yet.</p>
+        </details>
+
+        <details>
+          <summary><h3>Can I save just the audio as MP3?</h3></summary>
+          <p class="a">Yes. Choose MP3 or M4A as the output instead of video. M4A keeps the original sound track as the site sent it, and MP3 is converted right in your browser, with nothing uploaded anywhere.</p>
         </details>
 
         <details>
