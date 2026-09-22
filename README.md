@@ -23,6 +23,9 @@ favicon.ico  assets/icon-192.png  apple-touch-icon.png
                       and devices that take no SVG (rendered from the
                       extension's assets/icon*.svg with resvg)
 robots.txt  sitemap.xml  CNAME
+5cf8244c1e17abf3d9c2af3ceea9a38c.txt
+                      the IndexNow key: proves to Bing and the other IndexNow
+                      engines that a ping for kescher.app comes from its owner
 ```
 
 Every page ships a strict Content Security Policy: scripts and styles only
@@ -52,3 +55,17 @@ a release Firefox refuses an unsigned file).
 
 See the [imprint](https://kescher.app/imprint/). Security problems: see
 [`SECURITY.md`](SECURITY.md).
+
+## Telling search engines about a change
+
+After a change worth crawling, ping IndexNow (Bing, Yandex, Seznam, Naver; no
+account needed). The key is the file `5cf8244c1e17abf3d9c2af3ceea9a38c.txt` at the root:
+
+```
+curl -s -o /dev/null -w "%{http_code}\n" \
+  "https://api.indexnow.org/indexnow?url=https://kescher.app/&key=5cf8244c1e17abf3d9c2af3ceea9a38c"
+```
+
+`200` or `202` means accepted. Google does not take IndexNow; use *Request
+indexing* in the Search Console for it.
+
