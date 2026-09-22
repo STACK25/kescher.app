@@ -71,7 +71,7 @@
       "name": "Does Kescher work on every website?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "There is no list of supported sites in Kescher. It watches the requests the page you are on makes, and whatever that page plays — HLS, DASH, MP4 or WebM — turns up in the panel. The exception is DRM: a stream protected by it is listed as protected and left alone."
+        "text": "There is no list of supported sites in Kescher. It watches the requests the page you are on makes, and whatever that page plays — HLS, DASH, MP4 or WebM — turns up in the panel. The exception is DRM: copy&#8209;protected video is marked as protected and cannot be downloaded."
       }
     },
     {
@@ -79,7 +79,7 @@
       "name": "Does it download from Netflix?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. Netflix and services like it protect their video with DRM, and Kescher never circumvents copy protection. A protected stream is reported as protected, and that is where it stops."
+        "text": "No. Netflix and services like it protect their video with DRM, and Kescher does not circumvent copy protection. Protected video is marked as protected in the panel and cannot be downloaded."
       }
     },
     {
@@ -179,7 +179,7 @@
             <span class="ext"><svg viewBox="0 0 64 64" width="16" height="16" aria-hidden="true" focusable="false"><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="#101012"/><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="none" stroke="#fff" stroke-width="6.4"/><polygon points="23.3,16 23.3,48 50.9,32" fill="#ff5a36"/></svg><b>2</b></span>
           </div>
           <div class="win-body">
-            <div class="player"><svg viewBox="0 0 16 16" width="46" height="46"><polygon points="4.5,3 4.5,13 13,8" fill="currentColor"/></svg><span class="seek"><i></i></span></div>
+            <div class="player"><span class="play"><svg viewBox="0 0 16 16" width="22" height="22"><polygon points="5,3 5,13 13.5,8" fill="currentColor"/></svg></span><span class="ptitle">The Deep Sea<small>Episode 3 &middot; The Hadal Zone</small></span><span class="seek"><i></i></span></div>
             <p class="vt">The Deep Sea &mdash; Episode 3: The Hadal Zone</p>
             <p class="vm">Blue Planet Documentaries &middot; 1:31:17</p>
           </div>
@@ -204,17 +204,12 @@
   <!-- ===================== how it works ===================== -->
   <section class="how" id="how">
     <div class="wrap">
-      <div class="how-head">
-        <div>
-          <p class="eyebrow">How it works</p>
-          <h2>Download videos from any website.</h2>
-        </div>
-        <p class="aside">Every picture here is the extension itself, not an illustration.</p>
-      </div>
+      <p class="eyebrow">How it works</p>
+      <h2>Download videos from any website.</h2>
       <ol class="steps">
         <li>
           <div class="shot shot-play" aria-hidden="true">
-            <div class="mini"><span class="mini-bar"><span class="ext"><svg viewBox="0 0 64 64" width="16" height="16" aria-hidden="true" focusable="false"><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="#101012"/><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="none" stroke="#fff" stroke-width="6.4"/><polygon points="23.3,16 23.3,48 50.9,32" fill="#ff5a36"/></svg><b>2</b></span></span><span class="mini-player"><svg viewBox="0 0 16 16" width="40" height="40"><polygon points="4.5,3 4.5,13 13,8" fill="currentColor"/></svg></span></div>
+            <div class="mini"><span class="mini-bar"><span class="ext"><svg viewBox="0 0 64 64" width="16" height="16" aria-hidden="true" focusable="false"><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="#101012"/><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="none" stroke="#fff" stroke-width="6.4"/><polygon points="23.3,16 23.3,48 50.9,32" fill="#ff5a36"/></svg><b>2</b></span></span><span class="mini-player player"><span class="play"><svg viewBox="0 0 16 16" width="18" height="18"><polygon points="5,3 5,13 13.5,8" fill="currentColor"/></svg></span><span class="seek"><i></i></span></span></div>
           </div>
           <h3><span class="n">01</span>Press play</h3>
           <p>On any page. The Kescher icon <b>counts what it found</b> while you watch. It fetches nothing on its own.</p>
@@ -234,7 +229,11 @@
   </section>
 
   <!-- ===================== the net ===================== -->
-  <!-- Dark in both themes: the one band that carries the brand's own room. -->
+  <!-- The dark chapter: the stream band, audio and subtitles share one dark
+       stretch that the light page fades into and out of. It is dark in both
+       themes; the tokens are swapped on .chapter, so the drawings inside it
+       follow without a second palette. -->
+  <div class="chapter">
   <section class="net">
     <div class="wrap">
       <p class="eyebrow">HLS and DASH streams</p>
@@ -259,7 +258,7 @@
     </div>
   </section>
 
-  <section class="stmt alt">
+  <section class="stmt flip">
     <div class="wrap inner">
       <div>
         <p class="eyebrow">Audio only &middot; M4A and MP3</p>
@@ -351,14 +350,15 @@
       </div>
     </div>
   </section>
+  </div>
 
   <!-- ===================== compare ===================== -->
   <!-- Only verified facts: the free-tier line is quoted verbatim from the
        extension repository's store/listing.en.md, which checked it against the
        vendor's own help pages on 2026-09-13. Do not sharpen it. -->
   <section class="compare" id="compare">
-    <div class="wrap inner">
-      <div>
+    <div class="wrap">
+      <div class="cmp-head">
         <p class="eyebrow">Compare</p>
         <h2>Free means free. <span class="q">Not three downloads.</span></h2>
         <p>The best-known downloader rations exactly the thing that matters, saving a stream, and sells the rest. Kescher does not ration anything.</p>
@@ -408,7 +408,7 @@
             <tr><td class="k">Companion app</td><td class="v"><span class="no">None</span></td><td class="n">Nothing is installed outside the browser</td></tr>
             <tr><td class="k">Account</td><td class="v"><span class="no">None</span></td><td class="n">No sign&#8209;up, no licence key, no e&#8209;mail address</td></tr>
             <tr><td class="k">Telemetry, remote code</td><td class="v"><span class="no">None</span></td><td class="n">No analytics in the extension, nothing fetched to run</td></tr>
-            <tr><td class="k">DRM</td><td class="v">Reported, never opened</td><td class="n">Protected streams are listed as protected and left alone</td></tr>
+            <tr><td class="k">DRM</td><td class="v">Not downloadable</td><td class="n">Copy&#8209;protected video is marked as protected and cannot be saved</td></tr>
             <tr><td class="k">Price</td><td class="v"><span class="no">Free</span></td><td class="n">For every download, in every quantity</td></tr>
           </tbody>
         </table>
@@ -461,12 +461,12 @@
       <div class="qs">
         <details>
           <summary><h3>Does Kescher work on every website?</h3></summary>
-          <p class="a">There is no list of supported sites in Kescher. It watches the requests the page you are on makes, and whatever that page plays &mdash; HLS, DASH, MP4 or WebM &mdash; turns up in the panel. The exception is DRM: a stream protected by it is listed as protected and left alone.</p>
+          <p class="a">There is no list of supported sites in Kescher. It watches the requests the page you are on makes, and whatever that page plays &mdash; HLS, DASH, MP4 or WebM &mdash; turns up in the panel. The exception is DRM: copy&#8209;protected video is marked as protected and cannot be downloaded.</p>
         </details>
 
         <details>
           <summary><h3>Does it download from Netflix?</h3></summary>
-          <p class="a">No. Netflix and services like it protect their video with DRM, and Kescher never circumvents copy protection. A protected stream is reported as protected, and that is where it stops.</p>
+          <p class="a">No. Netflix and services like it protect their video with DRM, and Kescher does not circumvent copy protection. Protected video is marked as protected in the panel and cannot be downloaded.</p>
         </details>
 
         <details>
