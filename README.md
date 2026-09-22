@@ -14,7 +14,12 @@ assets/a.js           the loader of the self-hosted, cookieless visit counter
                       described on /privacy/
 assets/fonts/         Manrope, self-hosted (SIL Open Font License, see LICENSE-Manrope.txt)
 assets/og.png         the social card
-favicon.svg  robots.txt  sitemap.xml  CNAME
+favicon.svg           the tab icon, following the visitor's light or dark theme
+favicon.ico  assets/icon-192.png  apple-touch-icon.png
+                      the filled app mark as raster files, for search engines
+                      and devices that take no SVG (rendered from the
+                      extension's assets/icon*.svg with resvg)
+robots.txt  sitemap.xml  CNAME
 ```
 
 Every page ships a strict Content Security Policy: scripts and styles only
