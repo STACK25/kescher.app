@@ -32,43 +32,9 @@
 /* ===================== tokens ===================== */
 
 :root {
-  --bg: #fbfaf8;
-  --bg-2: #f4f2ee;
-  --ink: #16161a;
-  --grey: #6e6e78;
-  --grey-2: #9c9ca6;
-  --line: #e3e1dc;
-  --line-2: #d2cfc8;
-  --coral: #ff5a36;
-  --on-coral: #2a0e06;
-  --card: #ffffff;
-  --shadow:
-    0 1px 2px rgba(22, 22, 26, 0.05), 0 10px 24px -12px rgba(22, 22, 26, 0.16),
-    0 54px 96px -44px rgba(22, 22, 26, 0.34), 0 110px 130px -70px rgba(22, 22, 26, 0.22);
-  --grid-line: rgba(22, 22, 26, 0.08);
-  --sel: #f7f5f2;
-  --font: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --bg: #0e0e10;
-    --bg-2: #131316;
-    --ink: #f1f0ed;
-    --grey: #95959f;
-    --grey-2: #6a6a74;
-    --line: #232327;
-    --line-2: #33333a;
-    --coral: #ff6b4a;
-    --on-coral: #1a0b06;
-    --card: #17171a;
-    --shadow:
-      0 1px 0 rgba(255, 255, 255, 0.04), 0 10px 24px -12px rgba(0, 0, 0, 0.8),
-      0 54px 100px -50px rgba(0, 0, 0, 0.9);
-    --grid-line: rgba(241, 240, 237, 0.05);
-    --sel: #1d1d21;
-  }
-}
-:root[data-theme='dark'] {
+  /* One theme: dark (decided 2026-09-23 — one good dark mode rather than two
+     average ones). */
+  color-scheme: dark;
   --bg: #0e0e10;
   --bg-2: #131316;
   --ink: #f1f0ed;
@@ -84,6 +50,7 @@
     0 54px 100px -50px rgba(0, 0, 0, 0.9);
   --grid-line: rgba(241, 240, 237, 0.05);
   --sel: #1d1d21;
+  --font: 'Manrope', 'Helvetica Neue', Arial, sans-serif;
 }
 
 /* ===================== base ===================== */
@@ -234,35 +201,7 @@ h3 {
 .top .go:hover {
   filter: brightness(1.06);
 }
-.tog {
-  display: inline-flex;
-  background: var(--bg-2);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 2px;
-}
-.tog button {
-  appearance: none;
-  border: 0;
-  background: transparent;
-  color: var(--grey);
-  cursor: pointer;
-  border-radius: 999px;
-  font: 600 12px/1 var(--font);
-  letter-spacing: 0.02em;
-  min-height: 30px;
-  padding: 0 11px;
-}
-.tog button[aria-pressed='true'] {
-  background: var(--card);
-  color: var(--ink);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
-}
 @media (max-width: 700px) {
-  .tog button {
-    min-height: 40px;
-    padding: 0 12px;
-  }
   .top .go {
     min-height: 44px;
   }
@@ -433,10 +372,12 @@ html[data-browser='firefox'] .for-chrome .btn:hover {
   padding: 0 0 clamp(40px, 6vw, 70px);
 }
 .win {
+  --chrome: #232328;
+  --page: #f4f2ee;
   width: 88%;
   border-radius: 16px;
-  background: var(--card);
-  border: 1px solid var(--line);
+  background: var(--page);
+  border: 1px solid #34343b;
   box-shadow: var(--shadow);
   overflow: hidden;
 }
@@ -446,8 +387,7 @@ html[data-browser='firefox'] .for-chrome .btn:hover {
   gap: 12px;
   height: 46px;
   padding: 0 14px;
-  background: var(--bg-2);
-  border-bottom: 1px solid var(--line);
+  background: var(--chrome);
 }
 .lights {
   display: flex;
@@ -457,7 +397,7 @@ html[data-browser='firefox'] .for-chrome .btn:hover {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: var(--line-2);
+  background: #45454d;
 }
 .url {
   flex: 1;
@@ -467,9 +407,8 @@ html[data-browser='firefox'] .for-chrome .btn:hover {
   align-items: center;
   padding: 0 12px;
   border-radius: 999px;
-  background: var(--card);
-  border: 1px solid var(--line);
-  color: var(--grey);
+  background: #2e2e34;
+  color: #a3a3ad;
   font-size: 12.5px;
   white-space: nowrap;
   overflow: hidden;
@@ -481,7 +420,7 @@ html[data-browser='firefox'] .for-chrome .btn:hover {
   width: 30px;
   height: 30px;
   border-radius: 8px;
-  background: var(--sel);
+  background: #34343b;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -568,6 +507,9 @@ html[data-browser='firefox'] .for-chrome .btn:hover {
   border-radius: 2px;
   background: #ff5a36;
 }
+.win-body {
+  color: #16161a;
+}
 .win-body .vt {
   margin: 14px 0 2px;
   font-size: 16px;
@@ -578,7 +520,7 @@ html[data-browser='firefox'] .for-chrome .btn:hover {
 .win-body .vm {
   margin: 0;
   font-size: 13px;
-  color: var(--grey);
+  color: #6e6e78;
 }
 /* 800 px capture of a 400 px popup: shown at its own size, never above. */
 .popshot {
@@ -708,8 +650,8 @@ html[data-browser='firefox'] .for-chrome .btn:hover {
   width: 100%;
   max-width: 320px;
   border-radius: 12px 12px 0 0;
-  background: var(--card);
-  border: 1px solid var(--line);
+  background: #f4f2ee;
+  border: 1px solid #34343b;
   border-bottom: 0;
   overflow: hidden;
   box-shadow: 0 24px 48px -24px rgba(22, 22, 26, 0.5);
@@ -718,8 +660,7 @@ html[data-browser='firefox'] .for-chrome .btn:hover {
   display: flex;
   justify-content: flex-end;
   padding: 9px 12px;
-  background: var(--bg-2);
-  border-bottom: 1px solid var(--line);
+  background: #232328;
 }
 .mini-player {
   display: flex;
@@ -762,31 +703,23 @@ html[data-browser='firefox'] .for-chrome .btn:hover {
 
 /* ===================== the dark chapter ===================== */
 
-/* The stream band, audio and subtitles: one dark stretch the light page fades
-   into and out of while scrolling. The tokens are swapped here, so everything
-   inside, the drawings included, takes the dark palette without a second set
-   of rules. --page-bg is the page's own ground, taken on <main> before the
-   swap, for the two fades. */
+/* The stream band, audio and subtitles: one stretch a shade lighter than the
+   page, faded in and out while scrolling. The tokens are swapped here, so the
+   drawings inside take the chapter's ground without rules of their own.
+   --page-bg is the page's own ground, taken on <main> before the swap. */
 main {
   --page-bg: var(--bg);
 }
 .chapter {
-  --bg: #0e0e10;
-  --bg-2: #131316;
-  --ink: #f1f0ed;
-  --grey: #a3a3ad;
-  --grey-2: #74747e;
-  --line: #26262c;
-  --line-2: #36363e;
-  --coral: #ff6b4a;
-  --on-coral: #1a0b06;
-  --card: #17171a;
-  --grid-line: rgba(241, 240, 237, 0.05);
-  --sel: #1d1d21;
-  --fade: clamp(140px, 16vw, 240px);
+  --bg: #18181c;
+  --bg-2: #1d1d22;
+  --card: #1f1f24;
+  --line: #2a2a30;
+  --line-2: #3a3a42;
+  --fade: clamp(90px, 10vw, 160px);
   color: var(--ink);
-  /* Eased fades: a straight two-stop ramp from light to dark reads as a
-     grey smear in its middle, these stops follow an ease-in-out curve. */
+  /* Eased fades: a straight two-stop ramp shows a band in its middle, these
+     stops follow an ease-in-out curve. */
   --m1: color-mix(in oklab, var(--page-bg) 94%, var(--bg));
   --m2: color-mix(in oklab, var(--page-bg) 75%, var(--bg));
   --m3: color-mix(in oklab, var(--page-bg) 45%, var(--bg));
@@ -810,21 +743,6 @@ main {
       var(--m1) calc(100% - var(--fade) * 0.2),
       var(--page-bg) 100%
     );
-}
-/* In the dark theme the chapter steps one shade up, so it still reads. */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) .chapter {
-    --bg: #17171b;
-    --bg-2: #1b1b20;
-    --card: #1d1d22;
-    --fade: clamp(80px, 8vw, 120px);
-  }
-}
-:root[data-theme='dark'] .chapter {
-  --bg: #17171b;
-  --bg-2: #1b1b20;
-  --card: #1d1d22;
-  --fade: clamp(80px, 8vw, 120px);
 }
 .chapter .stmt {
   border-top: 0;
@@ -1131,111 +1049,6 @@ main {
   border-top-color: rgba(42, 14, 6, 0.18);
 }
 
-
-/* ===================== spec table ===================== */
-
-.specs {
-  border-top: 1px solid var(--line);
-  padding: clamp(48px, 6.5vw, 96px) 0;
-}
-.tbl-wrap {
-  overflow-x: auto;
-}
-.specs table {
-  border-collapse: collapse;
-  width: 100%;
-  min-width: 520px;
-  margin-top: clamp(22px, 3vw, 38px);
-}
-.specs th,
-.specs td {
-  text-align: left;
-  vertical-align: top;
-  padding: 15px 20px 15px 0;
-  border-bottom: 1px solid var(--line);
-  font-size: 15.5px;
-}
-.specs thead th {
-  font: 700 11px/1 var(--font);
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--grey-2);
-  padding-top: 0;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--line-2);
-  white-space: nowrap;
-}
-.specs td.k {
-  font-weight: 700;
-  letter-spacing: -0.015em;
-  white-space: nowrap;
-  width: 14em;
-}
-.specs td.v {
-  color: var(--ink);
-  font-weight: 500;
-  width: 17em;
-}
-.specs td.n {
-  color: var(--grey);
-  font-size: 15px;
-}
-.specs td.dash {
-  color: var(--grey-2);
-}
-.no {
-  color: var(--coral);
-  font-weight: 700;
-}
-.specs tr:last-child td {
-  border-bottom: 0;
-}
-@media (max-width: 640px) {
-  .specs table {
-    min-width: 0;
-    margin-top: 22px;
-  }
-  .specs thead {
-    position: absolute;
-    left: -9999px;
-  }
-  .specs tbody tr {
-    display: block;
-    border-bottom: 1px solid var(--line);
-    padding: 15px 0;
-  }
-  .specs tbody tr:last-child {
-    border-bottom: 0;
-  }
-  .specs td,
-  .specs td.k,
-  .specs td.v,
-  .specs td.n {
-    display: block;
-    border-bottom: 0;
-    padding: 0;
-    width: auto;
-  }
-  .specs td.k {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--grey-2);
-    margin-bottom: 5px;
-    white-space: normal;
-  }
-  .specs td.v {
-    font-size: 17px;
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    margin-bottom: 4px;
-  }
-  .specs td.n {
-    font-size: 15px;
-    line-height: 1.5;
-  }
-}
 
 /* ===================== browsers / install ===================== */
 

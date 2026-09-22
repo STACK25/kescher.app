@@ -8,8 +8,8 @@ step; GitHub Pages serves the `main` branch as is.
 index.html            the landing page
 privacy/  license/  imprint/   the three documents linked in the footer
 404.html
-assets/site.css       stylesheet and theme tokens (light, dark, system)
-assets/site.js        the Auto / Light / Dark switch
+assets/site.css       stylesheet and its tokens (one theme: dark)
+assets/site.js        which browser is looking, so its install button leads
 assets/a.js           the loader of the self-hosted, cookieless visit counter
                       described on /privacy/
 assets/fonts/         Manrope, self-hosted (SIL Open Font License, see LICENSE-Manrope.txt)
