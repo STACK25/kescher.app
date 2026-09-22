@@ -127,6 +127,11 @@
       <svg viewBox="0 0 64 64" width="26" height="26" aria-hidden="true" focusable="false"><clipPath id="kj1"><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5"/></clipPath><g clip-path="url(#kj1)" fill="none" stroke="currentColor" stroke-width="1.9" opacity=".45"><path d="M16.64 0v64M26.88 0v64M37.12 0v64M47.36 0v64M0 16.64h64M0 26.88h64M0 37.12h64M0 47.36h64"/></g><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="none" stroke="currentColor" stroke-width="6.4"/><polygon points="23.3,16 23.3,48 50.9,32" fill="#ff5a36"/></svg>
       <span>Kescher</span>
     </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#how">How it works</a>
+      <a href="#compare">Compare</a>
+      <a href="#faq">FAQ</a>
+    </nav>
     <span class="sp"></span>
     <div class="tog" role="group" aria-label="Appearance">
       <button type="button" data-t="auto" aria-pressed="true">Auto</button>
@@ -141,168 +146,116 @@
 
   <!-- ===================== hero ===================== -->
   <section class="hero">
-    <div class="wrap">
-      <!-- The page's one h1 is this line: it says what Kescher is in the words
-           people search for. The wordmark below it stays the visual headline. -->
-      <h1 class="eyebrow">Free video downloader &middot; Chrome &amp; Firefox</h1>
-      <p class="wordmark">Kescher<span class="dot">.</span></p>
-      <p class="claim">The video a page plays, written to your disk as one finished file <em>&mdash; picture, sound, subtitles and all.</em></p>
-      <!-- The visitor's own browser leads: site.js stamps data-browser on <html>
-           before first paint and the CSS puts that button first with the
-           emphasis. Without a stamp Firefox leads, being the one in a store. -->
-      <div class="buttons">
-        <a class="btn pri for-chrome" href="https://chromewebstore.google.com/detail/kescher/kmobponokcnpchggbonahochfohiaoan" data-umami-event="install" data-umami-event-browser="chrome" data-umami-event-channel="cws"><span class="yours">Your browser</span>Install for Chrome<small>Chrome Web Store &middot; also Vivaldi, Edge, Brave, Opera</small></a>
-        <a class="btn sec for-firefox" href="https://addons.mozilla.org/firefox/addon/kescher/" data-umami-event="install" data-umami-event-browser="firefox" data-umami-event-channel="amo"><span class="yours">Your browser</span>Install for Firefox<small>From addons.mozilla.org &middot; one click</small></a>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <!-- The page's one h1 is this line: it says what Kescher is in the words
+             people search for. The headline below it is the visual one. -->
+        <h1 class="eyebrow">Free video downloader &middot; Chrome &amp; Firefox</h1>
+        <p class="headline">Save any video you watch<span class="dot">.</span> <span class="q">In one click.</span></p>
+        <p class="claim">Press play, open Kescher, press Download. A stream becomes one MP4 that plays anywhere, and the sound alone becomes an MP3.</p>
+        <!-- The visitor's own browser leads: site.js stamps data-browser on <html>
+             before first paint and the CSS puts that button first with the
+             emphasis. Without a stamp Firefox leads, being the one in a store. -->
+        <div class="buttons">
+          <a class="btn pri for-chrome" href="https://chromewebstore.google.com/detail/kescher/kmobponokcnpchggbonahochfohiaoan" data-umami-event="install" data-umami-event-browser="chrome" data-umami-event-channel="cws"><span class="yours">Your browser</span>Add to Chrome<small>Also Vivaldi, Edge, Brave, Opera</small></a>
+          <a class="btn sec for-firefox" href="https://addons.mozilla.org/firefox/addon/kescher/" data-umami-event="install" data-umami-event-browser="firefox" data-umami-event-channel="amo"><span class="yours">Your browser</span>Add to Firefox<small>From addons.mozilla.org</small></a>
+        </div>
+        <ul class="chips">
+          <li>Free, no quota</li>
+          <li>No account</li>
+          <li>No companion app</li>
+          <li>Nothing leaves the browser</li>
+        </ul>
       </div>
-      <p class="underline">
-        <span><b>Free of charge.</b></span>
-        <span>No quota.</span>
-        <span>No account.</span>
-        <span>No companion app.</span>
-        <span>Nothing leaves the browser.</span>
-      </p>
+
+      <!-- The product, not a drawing of it: the popup is the store screenshot's
+           capture of the real build (scripts/screenshots.mjs in the extension
+           repository), laid over a browser window drawn in CSS. -->
+      <div class="stage">
+        <div class="win" aria-hidden="true">
+          <div class="win-bar">
+            <span class="lights"><i></i><i></i><i></i></span>
+            <span class="url">video.example.org/the-deep-sea/episode-3</span>
+            <span class="ext"><svg viewBox="0 0 64 64" width="16" height="16" aria-hidden="true" focusable="false"><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="#101012"/><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="none" stroke="#fff" stroke-width="6.4"/><polygon points="23.3,16 23.3,48 50.9,32" fill="#ff5a36"/></svg><b>2</b></span>
+          </div>
+          <div class="win-body">
+            <div class="player"><svg viewBox="0 0 16 16" width="46" height="46"><polygon points="4.5,3 4.5,13 13,8" fill="currentColor"/></svg><span class="seek"><i></i></span></div>
+            <p class="vt">The Deep Sea &mdash; Episode 3: The Hadal Zone</p>
+            <p class="vm">Blue Planet Documentaries &middot; 1:31:17</p>
+          </div>
+        </div>
+        <img class="popshot" src="/assets/shots/popup-now-playing.webp" width="800" height="654" alt="The Kescher panel open over the page: the episode that is playing is listed first, with the output, the quality, the audio language, the file name and a Download button.">
+      </div>
     </div>
   </section>
 
-  <!-- ===================== product shot ===================== -->
-  <section class="shotband">
-    <div class="wrap shotgrid">
-      <div>
-        <p class="eyebrow">The panel</p>
-        <h2>Everything the page is playing, listed once.</h2>
-        <p>Open it and you see what Kescher found while you watched: the stream, its variants, the plain files sitting beside it. <b>No thumbnails to wait for, no upsell, nothing greyed out behind a plan.</b></p>
-        <p>Change the four things worth changing, then press Download.</p>
-        <dl>
-          <dt>Quality</dt><dd>One entry per variant the manifest offers</dd>
-          <dt>Audio</dt><dd>One entry per alternate language rendition</dd>
-          <dt>File name</dt><dd>Prefilled from the page&rsquo;s own title</dd>
-          <dt>&#8943; menu</dt><dd>Audio only, subtitles, copy the URL</dd>
-        </dl>
-      </div>
-
-      <div class="pop" role="img" aria-label="The Kescher panel on video.example.org: eight media found, one download in progress at 1.21 of 1.57 gigabytes, and an HLS stream at 1080p ready to download in English or Spanish.">
-        <div class="head">
-          <svg viewBox="0 0 64 64" width="19" height="19" aria-hidden="true" focusable="false"><clipPath id="kj2"><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5"/></clipPath><g clip-path="url(#kj2)" fill="none" stroke="currentColor" stroke-width="1.9" opacity=".45"><path d="M16.64 0v64M26.88 0v64M37.12 0v64M47.36 0v64M0 16.64h64M0 26.88h64M0 37.12h64M0 47.36h64"/></g><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="none" stroke="currentColor" stroke-width="6.4"/><polygon points="23.3,16 23.3,48 50.9,32" fill="#ff5a36"/></svg>
-          <span class="nm">Kescher</span><span class="dot">&middot;</span><span class="host">video.example.org</span><span class="cnt">8 media</span>
-        </div>
-
-        <p class="glabel">In progress</p>
-        <div class="group">
-          <div class="item">
-            <div class="t">The Deep Sea &mdash; Episode 3: The Hadal Zone</div>
-            <div class="m">1.21 GB / 1.57 GB &middot; 24 MB/s</div>
-            <div class="bar"><i></i></div>
-            <div class="stop">Stop</div>
-          </div>
-        </div>
-
-        <p class="glabel">On this page</p>
-        <div class="group">
-          <div class="item">
-            <div class="t">Blue Planet Documentaries | Episode 3</div>
-            <span class="badge">HLS &middot; 1080p &middot; H.264 &middot; 4.4&nbsp;Mb/s &middot; 1.57&nbsp;GB &middot; 1:31:17</span>
-            <div class="selrow">
-              <span class="sel"><span>1080p</span><i>&#9660;</i></span>
-              <span class="sel"><span>English</span><i>&#9660;</i></span>
-            </div>
-            <div class="fname">The Deep Sea &ndash; The Hadal Zone.mp4</div>
-            <div class="row2"><span class="dlbtn">Download</span><span class="more">&#8943;</span></div>
-          </div>
-          <div class="small">
-            <svg class="pl" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><polygon points="4.5,3 4.5,13 13,8" fill="currentColor"/></svg>
-            Trailer<span class="sz">MP4 &middot; 55.7 MB</span>
-          </div>
-          <div class="small">
-            <svg class="pl" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><polygon points="4.5,3 4.5,13 13,8" fill="currentColor"/></svg>
-            Teaser 30s<span class="sz">MP4 &middot; 9.4 MB</span>
-          </div>
-        </div>
-
-        <div class="foot"><span>Downloads</span><span>Settings</span><span>Pause on this site</span></div>
-      </div>
+  <!-- ===================== facts ===================== -->
+  <section class="facts" aria-label="Kescher in four facts">
+    <div class="wrap">
+      <ul>
+        <li><b>0 trackers</b><span>No analytics, no remote code, no server of ours</span></li>
+        <li><b>14 languages</b><span>The whole extension, not just its store page</span></li>
+        <li><b>MP4 &middot; MP3</b><span>Streams included, never re&#8209;encoded</span></li>
+        <li><b>&euro;0, no limit</b><span>Every download, in every quantity</span></li>
+      </ul>
     </div>
   </section>
 
   <!-- ===================== how it works ===================== -->
-  <section class="how">
+  <section class="how" id="how">
     <div class="wrap">
-      <p class="eyebrow">How it works</p>
-      <h2>Download videos from any website.</h2>
-      <div class="beats">
+      <div class="how-head">
         <div>
-          <p class="k">Open</p>
-          <h3>Watch the page.</h3>
-          <p>A page that plays video makes the requests that fetch it. Kescher reads those requests as they go by and <b>counts what it found on the toolbar icon</b>. It fetches nothing on its own.</p>
+          <p class="eyebrow">How it works</p>
+          <h2>Download videos from any website.</h2>
         </div>
-        <div>
-          <p class="k">Pick</p>
-          <h3>Choose the version you want.</h3>
-          <p>Container, height, codec, bitrate, size and running time are on every row. <b>Set the quality and the audio language</b>, or set them once in the settings and never think about it again.</p>
-        </div>
-        <div>
-          <p class="k">Save</p>
-          <h3>Let it run.</h3>
-          <p>Segments arrive in order, get decrypted where the player had a key, and are <b>remuxed into one file</b>. It streams to disk as it goes, so a two&#8209;hour film never sits in memory.</p>
-        </div>
+        <p class="aside">Every picture here is the extension itself, not an illustration.</p>
       </div>
+      <ol class="steps">
+        <li>
+          <div class="shot shot-play" aria-hidden="true">
+            <div class="mini"><span class="mini-bar"><span class="ext"><svg viewBox="0 0 64 64" width="16" height="16" aria-hidden="true" focusable="false"><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="#101012"/><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="none" stroke="#fff" stroke-width="6.4"/><polygon points="23.3,16 23.3,48 50.9,32" fill="#ff5a36"/></svg><b>2</b></span></span><span class="mini-player"><svg viewBox="0 0 16 16" width="40" height="40"><polygon points="4.5,3 4.5,13 13,8" fill="currentColor"/></svg></span></div>
+          </div>
+          <h3><span class="n">01</span>Press play</h3>
+          <p>On any page. The Kescher icon <b>counts what it found</b> while you watch. It fetches nothing on its own.</p>
+        </li>
+        <li>
+          <div class="shot"><img src="/assets/shots/popup-stream.webp" width="800" height="670" loading="lazy" alt="The open row of the panel: output, quality, audio language, file name and Download."></div>
+          <h3><span class="n">02</span>Pick the version</h3>
+          <p>Video or just the sound, <b>the quality and the audio language</b>, and the file name. Or set them once and forget them.</p>
+        </li>
+        <li>
+          <div class="shot"><img src="/assets/shots/popup-progress.webp" width="800" height="632" loading="lazy" alt="A download in progress in the panel, with bytes, speed and a Stop button."></div>
+          <h3><span class="n">03</span>Done</h3>
+          <p>One file on your disk, <b>with title and cover art inside</b>. A two&#8209;hour film streams straight to disk and never fills your memory.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <!-- ===================== statements ===================== -->
-  <section class="stmt">
-    <div class="wrap inner">
-      <div>
-        <p class="eyebrow">HLS and DASH streams</p>
-        <h2>A few hundred pieces go in. <span class="q">One file comes out.</span></h2>
-        <p>HLS and DASH deliver video in segments, and every player throws them away after playing them. Kescher fetches them in order and remuxes them into a single <span class="mono">.mp4</span>: <b>fMP4 and MPEG&#8209;TS</b> segments, byte&#8209;range playlists, <span class="mono">EXT&#8209;X&#8209;MAP</span> initialisation segments, AES&#8209;128 segments unlocked with the key the page&rsquo;s own player already fetched, and multi&#8209;period DASH joined in presentation order.</p>
-        <p><b>No frame is re&#8209;encoded.</b> The picture that lands on your disk is the picture the site sent you. A plain MP4 or WebM needs none of this &mdash; it is simply saved as it was delivered.</p>
+  <!-- ===================== the net ===================== -->
+  <!-- Dark in both themes: the one band that carries the brand's own room. -->
+  <section class="net">
+    <div class="wrap">
+      <p class="eyebrow">HLS and DASH streams</p>
+      <h2>Hundreds of pieces in. <span class="c">One file out.</span></h2>
+      <p class="lede">A streaming video does not arrive as a file. It arrives in hundreds of small pieces, and the player throws each one away once it has played it. Kescher catches every piece, in order, and hands you <b>a single MP4 that plays anywhere</b>.</p>
+      <div class="flow" role="img" aria-label="Stream segments flowing into the Kescher net and coming out as one file, The Hadal Zone.mp4, 1.57 GB, not re-encoded.">
+        <div class="segs" aria-hidden="true">
+          <i class="g o3"></i><i class="o4"></i><i class="o3"></i><i class="o3"></i><i class="o2"></i><i class="o2"></i><i class="o2"></i><i class="o1"></i><i class="o2"></i><i class="g o1"></i><i class="o1"></i><i class="o1"></i><i class="o1"></i><i class="o1"></i>
+          <i class="o4"></i><i class="o3"></i><i class="g o4"></i><i class="o3"></i><i class="o4"></i><i class="o3"></i><i class="o3"></i><i class="o3"></i><i class="o2"></i><i class="o3"></i><i class="o2"></i><i class="g o2"></i><i class="o2"></i><i class="o2"></i>
+          <i class="o4"></i><i class="o4"></i><i class="o3"></i><i class="o4"></i><i class="g o4"></i><i class="o4"></i><i class="o4"></i><i class="o4"></i><i class="o4"></i><i class="o4"></i><i class="o5"></i><i class="o4"></i><i class="o4"></i><i class="g o4"></i>
+          <i class="o3"></i><i class="o4"></i><i class="o4"></i><i class="o3"></i><i class="o4"></i><i class="o4"></i><i class="g o4"></i><i class="o4"></i><i class="o4"></i><i class="o4"></i><i class="o4"></i><i class="o5"></i><i class="o4"></i><i class="o4"></i>
+          <i class="o4"></i><i class="o3"></i><i class="o4"></i><i class="o3"></i><i class="o3"></i><i class="o3"></i><i class="o3"></i><i class="o3"></i><i class="g o3"></i><i class="o2"></i><i class="o3"></i><i class="o2"></i><i class="o3"></i><i class="o2"></i>
+          <i class="o3"></i><i class="g o4"></i><i class="o3"></i><i class="o3"></i><i class="o2"></i><i class="o2"></i><i class="o2"></i><i class="o1"></i><i class="o2"></i><i class="o1"></i><i class="g o1"></i><i class="o1"></i><i class="o1"></i><i class="o1"></i>
+        </div>
+        <svg class="mesh" viewBox="0 0 64 64" width="210" height="210" aria-hidden="true" focusable="false"><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="#16161b"/><g fill="none" stroke="#f1f0ed" stroke-width="1.2" opacity=".35"><path d="M16.64 6v52M26.88 4v56M37.12 4v56M47.36 6v52M6 16.64h52M4 26.88h56M4 37.12h56M6 47.36h52"/></g><rect x="3.2" y="3.2" width="57.6" height="57.6" rx="17.5" fill="none" stroke="#f1f0ed" stroke-width="3.2"/><polygon points="23.3,16 23.3,48 50.9,32" fill="#ff6b4a"/></svg>
+        <div class="file" aria-hidden="true">
+          <div class="file-head"><span class="file-ic"><svg viewBox="0 0 16 16" width="18" height="18"><polygon points="4.5,3 4.5,13 13,8" fill="currentColor"/></svg></span><span><b>The Hadal Zone.mp4</b><small>1.57 GB &middot; 1080p &middot; 1:31:17</small></span></div>
+          <div class="file-tags"><span>Not re&#8209;encoded</span><span>Title &amp; cover inside</span><span>+ subtitles</span></div>
+        </div>
       </div>
-      <div class="art">
-        <svg viewBox="0 0 520 250" role="img" aria-label="Rows of stream segments converging into one continuous file bar labelled one .mp4.">
-          <g fill="none" stroke="currentColor" stroke-width="1" style="color:var(--line-2)">
-            <rect x="0.5" y="0.5" width="519" height="249" rx="14"/>
-          </g>
-          <text x="26" y="38" font-family="Manrope, sans-serif" font-size="11" font-weight="700" letter-spacing="2.2" fill="currentColor" style="color:var(--grey-2)">SEGMENTS</text>
-          <g fill="currentColor" style="color:var(--coral)">
-            <rect x="26" y="56" width="20" height="22" rx="3"/><rect x="50" y="56" width="20" height="22" rx="3"/>
-            <rect x="74" y="56" width="20" height="22" rx="3"/><rect x="98" y="56" width="20" height="22" rx="3"/>
-            <rect x="122" y="56" width="20" height="22" rx="3"/><rect x="146" y="56" width="20" height="22" rx="3"/>
-            <rect x="170" y="56" width="20" height="22" rx="3"/><rect x="194" y="56" width="20" height="22" rx="3"/>
-            <rect x="218" y="56" width="20" height="22" rx="3"/><rect x="242" y="56" width="20" height="22" rx="3"/>
-            <rect x="266" y="56" width="20" height="22" rx="3"/><rect x="290" y="56" width="20" height="22" rx="3"/>
-          </g>
-          <g fill="currentColor" style="color:var(--grey-2)" opacity=".4">
-            <rect x="314" y="56" width="20" height="22" rx="3"/><rect x="338" y="56" width="20" height="22" rx="3"/>
-            <rect x="362" y="56" width="20" height="22" rx="3"/><rect x="386" y="56" width="20" height="22" rx="3"/>
-            <rect x="410" y="56" width="20" height="22" rx="3"/><rect x="434" y="56" width="20" height="22" rx="3"/>
-            <rect x="458" y="56" width="20" height="22" rx="3"/><rect x="482" y="56" width="12" height="22" rx="3"/>
-          </g>
-          <g fill="none" stroke="currentColor" stroke-width="1.2" style="color:var(--line-2)">
-            <path d="M36 104 C36 130 250 126 250 142"/>
-            <path d="M130 104 C130 128 250 128 250 142"/>
-            <path d="M250 104 V142"/>
-            <path d="M370 104 C370 128 250 128 250 142"/>
-            <path d="M470 104 C470 130 250 126 250 142"/>
-          </g>
-          <g fill="currentColor" style="color:var(--grey-2)">
-            <text x="26" y="95" font-family="Manrope, sans-serif" font-size="11.5">fMP4</text>
-            <text x="92" y="95" font-family="Manrope, sans-serif" font-size="11.5">MPEG&#8209;TS</text>
-            <text x="184" y="95" font-family="Manrope, sans-serif" font-size="11.5">byte range</text>
-            <text x="288" y="95" font-family="Manrope, sans-serif" font-size="11.5">EXT&#8209;X&#8209;MAP</text>
-            <text x="400" y="95" font-family="Manrope, sans-serif" font-size="11.5">AES&#8209;128</text>
-          </g>
-          <rect x="26" y="152" width="468" height="42" rx="10" fill="currentColor" style="color:var(--ink)"/>
-          <text x="44" y="179" font-family="Manrope, sans-serif" font-size="16" font-weight="800" letter-spacing="-.4" fill="currentColor" style="color:var(--bg)">The Deep Sea &ndash; The Hadal Zone.mp4</text>
-          <g fill="currentColor" style="color:var(--grey-2)">
-            <text x="26" y="220" font-family="Manrope, sans-serif" font-size="12">1.57 GB</text>
-            <text x="118" y="220" font-family="Manrope, sans-serif" font-size="12">1:31:17</text>
-            <text x="208" y="220" font-family="Manrope, sans-serif" font-size="12">H.264 1080p</text>
-            <text x="330" y="220" font-family="Manrope, sans-serif" font-size="12">not re&#8209;encoded</text>
-          </g>
-          <circle cx="482" cy="212" r="9" fill="currentColor" style="color:var(--coral)"/>
-          <path d="M478 212 l3 3.4 l6 -7" fill="none" stroke="currentColor" style="color:var(--bg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
+      <p class="fine-print"><b>No frame is re&#8209;encoded.</b> The picture on your disk is the picture the site sent. A plain MP4 or WebM needs none of this: it is saved as it was delivered.</p>
     </div>
   </section>
 
@@ -311,7 +264,7 @@
       <div>
         <p class="eyebrow">Audio only &middot; M4A and MP3</p>
         <h2>Take the sound. <span class="q">Leave the picture behind.</span></h2>
-        <p><span class="mono">.m4a</span> lifts the original audio track out of the stream and puts it in its own container, untouched &mdash; the same bytes the site sent. <span class="mono">.mp3</span> is converted right there in the tab, by the extension, <b>with nothing installed and nothing uploaded to a converter</b>.</p>
+        <p>Pick <b>MP3</b> or <b>M4A</b> instead of video. M4A is the original sound track, the same bytes the site sent. MP3 is converted right there in your browser, <b>with nothing installed and nothing uploaded to a converter</b>.</p>
         <p>A ninety&#8209;minute lecture becomes eighty megabytes you can put on a phone and forget about.</p>
       </div>
       <div class="art">
@@ -395,6 +348,39 @@
             <text x="410" y="223" font-size="12" font-weight="500" fill="currentColor" style="color:var(--grey-2)">side by side</text>
           </g>
         </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== compare ===================== -->
+  <!-- Only verified facts: the free-tier line is quoted verbatim from the
+       extension repository's store/listing.en.md, which checked it against the
+       vendor's own help pages on 2026-09-13. Do not sharpen it. -->
+  <section class="compare" id="compare">
+    <div class="wrap inner">
+      <div>
+        <p class="eyebrow">Compare</p>
+        <h2>Free means free. <span class="q">Not three downloads.</span></h2>
+        <p>The best-known downloader rations exactly the thing that matters, saving a stream, and sells the rest. Kescher does not ration anything.</p>
+      </div>
+      <div class="vs">
+        <div class="side them">
+          <p class="who">Video DownloadHelper, free tier</p>
+          <ul>
+            <li><b>3</b> stream downloads after installation</li>
+            <li>then <b>1 every 2 hours</b></li>
+            <li>a countdown to the next one</li>
+          </ul>
+        </div>
+        <div class="side us">
+          <p class="who">Kescher</p>
+          <ul>
+            <li><b>Every</b> stream download</li>
+            <li><b>No</b> quota, no countdown</li>
+            <li><b>No</b> watermark, and never will</li>
+          </ul>
+        </div>
+        <p class="src">Video DownloadHelper&rsquo;s free tier allows three &ldquo;advanced&rdquo; downloads &mdash; the HLS/DASH stream reassembly that matters &mdash; after installation and then one more every two hours. Kescher has no quota, no countdown and no watermark, and never will. Source: the vendor&rsquo;s help pages, <i>Non&#8209;premium restrictions</i>, checked 13 September 2026.</p>
       </div>
     </div>
   </section>

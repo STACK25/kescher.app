@@ -14,6 +14,9 @@ assets/a.js           the loader of the self-hosted, cookieless visit counter
                       described on /privacy/
 assets/fonts/         Manrope, self-hosted (SIL Open Font License, see LICENSE-Manrope.txt)
 assets/og.png         the social card
+assets/shots/         the extension's panel as WebP, cut out of the store
+                      screenshots (scripts/screenshots.mjs in the extension
+                      repository); re-cut them when the panel changes
 favicon.svg           the tab icon, following the visitor's light or dark theme
 favicon.ico  assets/icon-192.png  apple-touch-icon.png
                       the filled app mark as raster files, for search engines
